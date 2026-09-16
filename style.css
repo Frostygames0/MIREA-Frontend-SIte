@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+    font-family: 'Inter';
+    margin: 0;
+    color: #222;
+    background: #fafafa;
+}
+
+/* Тип-селекторы для заголовков */
+h1,
+h2,
+h3 {
+    color: #2b5b84;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 40px;
+}
+
+/* ===== Шапка сайта ===== */
+/* Класс-селектор */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px 24px;
+    background: #2b5b84;
+    color: #fff;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Дочерний селектор (>): только прямые li внутри ul меню */
+.main-nav>ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Соседний селектор (+): отступ у каждого пункта меню, кроме первого */
+.main-nav li+li {
+    margin-left: 0;
+}
+
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+
+/* Псевдоклассы для пунктов меню */
+.main-nav a:visited {
+    color: #d9e6f2;
+}
+
+.main-nav a:hover {
+    background: #ffd43b;
+    color: #2b5b84;
+}
+
+.main-nav a:active {
+    background: #d4a900;
+}
+
+/* ===== Секции ===== */
+
+/* Соседний селектор: абзац сразу после h2 выделяем курсивом */
+section h2+p {
+    color: #555;
+    font-style: italic;
+}
+
+/* Общий (следующий) селектор ~: все p после h3 внутри примеров кода */
+.code-example h3~p {
+    margin: 6px 0;
+}
+
+/* ===== Карточки языков ===== */
+.lang-desc-row,
+.news-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+/* Класс-селектор + дочерний селектор */
+.lang-desc-row>figure {
+    flex-shrink: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    width: 220px;
+}
+
+.news-element {
+    display: flex;
+    align-items: flex-start;
+    flex: 0 0 320px;
+    gap: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    width: 320px;
+}
+
+.news-element img {
+    flex-shrink: 0;
+    aspect-ratio: 1;
+    min-height: 200px;
+    min-width: 200px;
+}
+
+/* Дочерний селектор: заголовок и текст новости идут сверху вниз внутри обёртки */
+.news-text>h3 {
+    margin: 0 0 4px;
+}
+
+.news-text>p {
+    margin: 0;
+}
+
+pre {
+    background: #f4f4f4;
+    border-left: 4px solid #2b5b84;
+    padding: 12px;
+    overflow-x: auto;
+}
+
+blockquote {
+    border-left: 3px solid #ffd43b;
+    margin-left: 0;
+    padding-left: 16px;
+    color: #555;
+    font-style: italic;
+}
+
+/* ===== Боковая панель (факт) ===== */
+.fact-box {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: #fff7d6;
+    border: 1px solid #ffd43b;
+    border-radius: 8px;
+}
+
+/* ===== Термины ===== */
+dt {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* ===== Ногер ===== */
+footer {
+    margin-top: 40px;
+    padding: 20px 24px;
+    border-top: 1px solid #ccc;
+    font-size: 0.9em;
+    background: #f4f4f4;
+}
+
+.footer-anchors a {
+    margin-right: 16px;
+}
+
+address {
+    font-style: normal;
+    margin: 12px 0;
+}
+
+a {
+    color: #2b5b84;
+}
+
+/* Псевдоклассы для обычных ссылок на странице */
+a:visited {
+    color: #6a4c93;
+}
+
+a:hover {
+    text-decoration: underline;
+}
