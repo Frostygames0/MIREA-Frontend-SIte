@@ -39,6 +39,7 @@
             <h2>Новости</h2>
             <div class="news-row">
                 <article class="news-element">
+                    <span class="badge">NEW</span>
                     <img src="images/placeholder.jpg" alt="Placeholder" height="60" width="60">
                     <div class="news-text">
                         <h3>НОВОСТЬ</h3>
@@ -333,6 +334,14 @@
 
         <p class="footer-copy">&copy; 2026. Учебный проект «Языки программирования».</p>
     </footer>
+
+    <a href="#top" class="to-top" aria-label="Наверх">↑</a>
+    <script>
+        const toTop = document.querySelector('.to-top');
+        window.addEventListener('scroll', () => {
+            toTop.classList.toggle('visible', window.scrollY > 300);
+        });
+    </script>
 </body>
 
 </html>

@@ -31,6 +31,10 @@ main {
     padding: 16px 24px;
     background: #2b5b84;
     color: #fff;
+
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .logo {
@@ -41,6 +45,18 @@ main {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1em;
+
+    position: relative;
+    top: 1px;
+}
+
+.main-nav {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.178);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
 /* Дочерний селектор (>): только прямые li внутри ul меню */
@@ -50,11 +66,6 @@ main {
     list-style: none;
     margin: 0;
     padding: 0;
-}
-
-/* Соседний селектор (+): отступ у каждого пункта меню, кроме первого */
-.main-nav li+li {
-    margin-left: 0;
 }
 
 .main-nav a {
@@ -123,12 +134,32 @@ section h2+p {
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
+
+    position: relative;
 }
 
 .news-element img {
     height: 100%;
     width: auto;
     flex-shrink: 0;
+}
+
+.news-element > .badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    border-radius: 20px;
+    background-color: rgba(255, 0, 0, 0.445);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+
+    font-size: 0.7rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Дочерний селектор: заголовок и текст новости идут сверху вниз внутри обёртки */
@@ -219,6 +250,39 @@ a:visited {
     color: #6a4c93;
 }
 
-a:hover {
-    text-decoration: underline;
+
+/* Кнопочка поднятия вверх :) */
+.to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2b5b84;
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.4em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+}
+
+.to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.to-top,
+.to-top:visited {
+    color: #fff;
+}
+
+.to-top:hover {
+    background: #ffd43b;
+    color: #2b5b84;
+    box-shadow: 0 0 0 4px #d9e6f2;
 }
