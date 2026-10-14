@@ -27,6 +27,7 @@
                 <li><a href="#examples-section">Примеры кода</a></li>
                 <li><a href="#terms-section">Термины</a></li>
                 <li><a href="#images-section">Изображения</a></li>
+                <li><a href="#form-section">Форма</a></li>
             </ul>
         </nav>
     </header>
@@ -43,33 +44,45 @@
                     <img src="images/placeholder.jpg" alt="Placeholder" height="60" width="60">
                     <div class="news-text">
                         <h3>НОВОСТЬ</h3>
-                        <p>Proident voluptas odit illo veniam voluptas dolore. Consequuntur non veniam id sequi occaecat duis veniam dolore
-                        occaecat totam commodi qui magnam. Duis ea aspernatur anim aute nulla voluptas nesciunt magna numquam reprehenderit
-                        culpa amet nemo. Porro nostrum nostrud laborum quis doloremque laborum fugit laborum omnis laboriosam excepteur. Quia
-                        consequat aliquip aliquid excepteur in error blanditiis cupidatat labore quaerat voluptas aspernatur. Nostrum quasi
-                        molestiae sit quia totam autem ipsum.</p>
+                        <p>Proident voluptas odit illo veniam voluptas dolore. Consequuntur non veniam id sequi occaecat
+                            duis veniam dolore
+                            occaecat totam commodi qui magnam. Duis ea aspernatur anim aute nulla voluptas nesciunt
+                            magna numquam reprehenderit
+                            culpa amet nemo. Porro nostrum nostrud laborum quis doloremque laborum fugit laborum omnis
+                            laboriosam excepteur. Quia
+                            consequat aliquip aliquid excepteur in error blanditiis cupidatat labore quaerat voluptas
+                            aspernatur. Nostrum quasi
+                            molestiae sit quia totam autem ipsum.</p>
                     </div>
                 </article>
                 <article class="news-element">
                     <img src="images/placeholder.jpg" alt="Placeholder" height="60" width="60">
                     <div class="news-text">
                         <h3>НОВОСТЬ</h3>
-                        <p>Proident voluptas odit illo veniam voluptas dolore. Consequuntur non veniam id sequi occaecat duis veniam dolore
-                        occaecat totam commodi qui magnam. Duis ea aspernatur anim aute nulla voluptas nesciunt magna numquam reprehenderit
-                        culpa amet nemo. Porro nostrum nostrud laborum quis doloremque laborum fugit laborum omnis laboriosam excepteur. Quia
-                        consequat aliquip aliquid excepteur in error blanditiis cupidatat labore quaerat voluptas aspernatur. Nostrum quasi
-                        molestiae sit quia totam autem ipsum.</p>
+                        <p>Proident voluptas odit illo veniam voluptas dolore. Consequuntur non veniam id sequi occaecat
+                            duis veniam dolore
+                            occaecat totam commodi qui magnam. Duis ea aspernatur anim aute nulla voluptas nesciunt
+                            magna numquam reprehenderit
+                            culpa amet nemo. Porro nostrum nostrud laborum quis doloremque laborum fugit laborum omnis
+                            laboriosam excepteur. Quia
+                            consequat aliquip aliquid excepteur in error blanditiis cupidatat labore quaerat voluptas
+                            aspernatur. Nostrum quasi
+                            molestiae sit quia totam autem ipsum.</p>
                     </div>
                 </article>
                 <article class="news-element">
                     <img src="images/placeholder.jpg" alt="Placeholder" height="60" width="60">
                     <div class="news-text">
                         <h3>НОВОСТЬ</h3>
-                        <p>Proident voluptas odit illo veniam voluptas dolore. Consequuntur non veniam id sequi occaecat duis veniam dolore
-                        occaecat totam commodi qui magnam. Duis ea aspernatur anim aute nulla voluptas nesciunt magna numquam reprehenderit
-                        culpa amet nemo. Porro nostrum nostrud laborum quis doloremque laborum fugit laborum omnis laboriosam excepteur. Quia
-                        consequat aliquip aliquid excepteur in error blanditiis cupidatat labore quaerat voluptas aspernatur. Nostrum quasi
-                        molestiae sit quia totam autem ipsum.</p>
+                        <p>Proident voluptas odit illo veniam voluptas dolore. Consequuntur non veniam id sequi occaecat
+                            duis veniam dolore
+                            occaecat totam commodi qui magnam. Duis ea aspernatur anim aute nulla voluptas nesciunt
+                            magna numquam reprehenderit
+                            culpa amet nemo. Porro nostrum nostrud laborum quis doloremque laborum fugit laborum omnis
+                            laboriosam excepteur. Quia
+                            consequat aliquip aliquid excepteur in error blanditiis cupidatat labore quaerat voluptas
+                            aspernatur. Nostrum quasi
+                            molestiae sit quia totam autem ipsum.</p>
                     </div>
                 </article>
             </div>
@@ -143,7 +156,7 @@
         <!-- Секция с примерами -->
         <section id="examples-section">
             <h2>Примеры кода</h2>
-        
+
             <article class="code-example">
                 <h3>Python</h3>
                 <p>Простая программа «Hello, World!»:</p>
@@ -155,7 +168,7 @@
                     Динамическая типизация переменных.
                 </p>
             </article>
-        
+
             <article class="code-example">
                 <h3>JavaScript</h3>
                 <p>Тот же пример на JavaScript:</p>
@@ -315,7 +328,110 @@
                 <area shape="poly" coords="420,30,480,180,360,180" href="https://isocpp.org/" alt="C++" target="_blank">
             </map>
         </section>
+        <section id="form-section">
+            <h2>Форма обратной связи</h2>
+            <p>Заполните форму, чтобы предложить тему или язык для разбора.</p>
+
+            <form class="feedback-form" action="" method="post">
+
+                <fieldset>
+                    <legend>Личные данные</legend>
+                    <p>
+                        <label for="user-name">Имя:</label>
+                        <input type="text" id="user-name" name="user-name" placeholder="Иван Иванов"
+                            pattern="[А-Яа-яЁёA-Za-z\s\-]{2,40}" title="Только буквы, от 2 до 40 символов" required>
+                    </p>
+                    <p>
+                        <label for="user-phone">Телефон:</label>
+                        <input type="tel" id="user-phone" name="user-phone" placeholder="+7 (900) 123-45-67"
+                            pattern="\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}" title="Формат: +7 (900) 123-45-67"
+                            required>
+                    </p>
+                    <p>
+                        <label for="user-email">Email:</label>
+                        <input type="email" id="user-email" name="user-email" placeholder="name@example.com" required>
+                    </p>
+                    <p>
+                        <label for="user-pass">Пароль (от 6 до 16 символов):</label>
+                        <input type="password" id="user-pass" name="user-pass" placeholder="Придумайте пароль"
+                            minlength="6" maxlength="16" required>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Ваш уровень в программировании</legend>
+                    <label><input type="radio" name="level" value="beginner" checked> Новичок</label>
+                    <label><input type="radio" name="level" value="middle"> Средний</label>
+                    <label><input type="radio" name="level" value="pro"> Профессионал</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Языки</legend>
+                    <p>
+                        <label for="fav-lang">Любимый язык (обязательно):</label>
+                        <select id="fav-lang" name="fav-lang" required>
+                            <option value="">-- Выберите язык --</option>
+                            <option value="python">Python</option>
+                            <option value="js">JavaScript</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="cpp">C++</option>
+                            <option value="c">C</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="learn-langs">Что хотите изучать (Ctrl + клик для нескольких):</label>
+                        <select id="learn-langs" name="learn-langs" multiple size="4">
+                            <option value="python" selected>Python</option>
+                            <option value="js">JavaScript</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="cpp">C++</option>
+                            <option value="c">C</option>
+                        </select>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Дополнительно</legend>
+                    <p>
+                        <label for="meet-time">Удобное время для связи:</label>
+                        <input type="datetime-local" id="meet-time" name="meet-time" min="2026-01-01T09:00"
+                            max="2026-12-31T21:00" required>
+                    </p>
+                    <p>
+                        <label for="user-file">Приложить файл:</label>
+                        <input type="file" id="user-file" name="user-file">
+                    </p>
+                    <p>
+                        <label for="user-msg">Сообщение (от 10 до 300 символов):</label><br>
+                        <textarea id="user-msg" name="user-msg" cols="40" rows="6" minlength="10" maxlength="300"
+                            placeholder="Расскажите, что вам интересно..." required></textarea>
+                    </p>
+                </fieldset>
+
+                <p>
+                    <label><input type="checkbox" name="agree" checked required> Согласен на обработку данных</label>
+                </p>
+
+                <div class="form-buttons">
+                    <input type="submit" value="Отправить">
+                    <button type="reset">Очистить</button>
+                </div>
+            </form>
+            <h2>Как нас найти</h2>
+            <iframe class="embed-map" title="Карта: Красная площадь, Москва"
+                src="https://www.google.com/maps?q=Красная+площадь,+Москва&output=embed" loading="lazy" allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <h2>Видео по теме</h2>
+            <iframe class="embed-video" title="Видео про программирование"
+                src="https://www.youtube.com/embed/zTic41coJEM?si=HWCtlqEYeejejkuU" loading="lazy" allowfullscreen
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </main>
+
     <!-- Ногер -->
     <footer>
         <nav class="footer-anchors">
@@ -340,6 +456,14 @@
         const toTop = document.querySelector('.to-top');
         window.addEventListener('scroll', () => {
             toTop.classList.toggle('visible', window.scrollY > 300);
+        });
+    </script>
+
+    <script>
+        const feedbackForm = document.querySelector('.feedback-form');
+        feedbackForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('лол нет');
         });
     </script>
 </body>

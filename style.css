@@ -286,3 +286,149 @@ a:visited {
     color: #2b5b84;
     box-shadow: 0 0 0 4px #d9e6f2;
 }
+
+/* ===== Форма ===== */
+
+.feedback-form {
+    background: #eef4fa;
+    border: 1px solid #c5d8ea;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    max-width: 100%;
+}
+
+.feedback-form fieldset {
+    margin: 0 0 1.25rem;
+    padding: 0.75em 1em 1em;
+    border: 2px solid #2b5b84;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.feedback-form legend {
+    padding: 0 0.5em;
+    font-weight: bold;
+    color: #2b5b84;
+}
+
+.feedback-form p {
+    margin: 0.75em 0;
+}
+
+.feedback-form label {
+    display: inline-block;
+    margin-right: 0.5em;
+    font-weight: 600;
+}
+
+/* Звёздочка у обязательных полей: */
+.feedback-form label:has(+ [required])::after {
+    content: " *";
+    color: #d62828;
+}
+
+/* Поля ввода */
+.feedback-form input[type="text"],
+.feedback-form input[type="tel"],
+.feedback-form input[type="email"],
+.feedback-form input[type="password"],
+.feedback-form input[type="datetime-local"],
+.feedback-form select,
+.feedback-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 28rem;
+    margin-top: 0.3em;
+    padding: 0.6em 0.8em;
+    font: inherit;
+    background: #fafcff;
+    border: 2px solid #b8c7d6;
+    border-radius: 0.4rem;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+/* Стиль поля в фокусе */
+.feedback-form input:focus,
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+    outline: none;
+    background: #fffbe6;
+    border-color: #ffd43b;
+}
+
+/* Подсказка placeholder */
+.feedback-form ::placeholder {
+    color: #8aa0b5;
+    font-style: italic;
+    opacity: 1;
+}
+
+.feedback-form input:focus::placeholder,
+.feedback-form textarea:focus::placeholder {
+    color: #c9b25a;
+}
+
+/* Подсветка некорректного значения (только после ввода) */
+.feedback-form input:not(:placeholder-shown):invalid,
+.feedback-form textarea:not(:placeholder-shown):invalid {
+    border-color: #d62828;
+}
+
+.feedback-form textarea {
+    resize: vertical;
+}
+
+.feedback-form input[type="radio"],
+.feedback-form input[type="checkbox"] {
+    accent-color: #2b5b84;
+    margin-right: 0.4em;
+}
+
+/* Кнопки */
+.form-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.feedback-form button,
+.feedback-form input[type="submit"] {
+    padding: 0.7em 1.4em;
+    font: inherit;
+    font-weight: bold;
+    color: #fff;
+    background: #2b5b84;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.feedback-form button:hover,
+.feedback-form input[type="submit"]:hover {
+    background: #ffd43b;
+    color: #2b5b84;
+}
+
+.feedback-form button[type="reset"] {
+    background: #8a97a3;
+}
+
+/* ===== Карта и видео ===== */
+.embed-map,
+.embed-video {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.25);
+    margin-bottom: 1.5rem;
+}
+
+.embed-map {
+    height: 25rem;
+}
+
+.embed-video {
+    aspect-ratio: 16 / 9;
+}
