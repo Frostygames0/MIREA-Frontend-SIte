@@ -425,10 +425,6 @@ a:visited {
     margin-bottom: 1.5rem;
 }
 
-.embed-map {
-    height: 25rem;
-}
-
 .embed-video {
     aspect-ratio: 16 / 9;
 }
