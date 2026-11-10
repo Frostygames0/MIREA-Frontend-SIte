@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Словарь основных терминов программирования с поиском.">
+    <meta name="theme-color" content="#2b5b84">
+
+    <title>Термины — Языки программирования</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Шрифт: заранее устанавливаем соединение с серверами Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+    <!-- Шапка сайта (одинаковая на всех страницах) -->
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/favicon.svg" alt="" width="32" height="32">
+            <span>Языки программирования</span>
+        </a>
+        <div class="notify">
+            <button type="button" class="notify-btn" aria-label="Уведомления">
+                🔔
+                <span class="notify-count">4</span>
+            </button>
+            <div class="notify-list">
+                <ul>
+                    <li><a href="index.html#news-section" data-id="news"><span class="num">1</span>Свежие новости</a></li>
+                    <li><a href="examples.html" data-id="examples"><span class="num">2</span>Новые примеры кода</a></li>
+                    <li><a href="quiz.html" data-id="quiz"><span class="num">3</span>Проверьте себя в тесте</a></li>
+                    <li><a href="contacts.html" data-id="contacts"><span class="num">4</span>Предложите тему</a></li>
+                </ul>
+            </div>
+        </div>
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger" aria-label="Открыть меню"><span></span></label>
+
+        <nav class="main-nav" aria-label="Основное меню">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html" aria-current="page">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a href="index.html">Главная</a> <span aria-hidden="true">›</span> <span>Термины</span>
+        </nav>
+        <h1 id="top">Основные термины</h1>
+        <p class="lead">Словарь понятий, которые встречаются при изучении любого языка программирования.</p>
+
+        <section id="terms-section">
+            <h2>Словарь</h2>
+            <div class="terms-search" hidden>
+                <label class="search-label">Найти термин:
+                    <input type="search" id="term-search" placeholder="Например, компилятор">
+                </label>
+                <p id="term-count" class="filter-status" aria-live="polite"></p>
+            </div>
+            <dl class="terms-list">
+                <div class="term">
+                    <dt>Алгоритм</dt>
+                    <dd>Конечная последовательность шагов, которая приводит к решению задачи.</dd>
+                </div>
+                <div class="term">
+                    <dt>API</dt>
+                    <dd>Программный интерфейс: набор функций и правил, через которые одна программа обращается к другой.</dd>
+                </div>
+                <div class="term">
+                    <dt>Библиотека</dt>
+                    <dd>Набор готового кода, который можно <em>подключить</em> к своему проекту, чтобы не писать всё с нуля.</dd>
+                    <dd>Коллекция готовых функций и инструментов для решения типовых задач.</dd>
+                </div>
+                <div class="term">
+                    <dt>Git</dt>
+                    <dd>Система контроля версий, которая хранит историю изменений файлов проекта.</dd>
+                </div>
+                <div class="term">
+                    <dt>IDE</dt>
+                    <dd>Интегрированная среда разработки: редактор кода, отладчик и другие инструменты в одной программе.</dd>
+                </div>
+                <div class="term">
+                    <dt>Интерпретатор</dt>
+                    <dd>Программа, выполняющая код <em>построчно</em>, без предварительной компиляции.</dd>
+                </div>
+                <div class="term">
+                    <dt>Компилятор</dt>
+                    <dd><strong>Компилятор</strong> — программа, переводящая исходный код в машинный код <em>перед</em> запуском.</dd>
+                    <dd>Инструмент, который проверяет код на ошибки ещё до запуска программы.</dd>
+                </div>
+                <div class="term">
+                    <dt>Отладка</dt>
+                    <dd>Поиск и исправление ошибок в программе.</dd>
+                </div>
+                <div class="term">
+                    <dt>Переменная</dt>
+                    <dd>Именованная область памяти, в которой хранится значение.</dd>
+                </div>
+                <div class="term">
+                    <dt>Синтаксис</dt>
+                    <dd>Набор правил, определяющих <strong>правильную запись</strong> инструкций на языке программирования.</dd>
+                </div>
+                <div class="term">
+                    <dt>Типизация</dt>
+                    <dd>Способ, которым язык работает с типами данных: статическая (тип известен до запуска) или динамическая (тип определяется во время выполнения).</dd>
+                </div>
+                <div class="term">
+                    <dt>Фреймворк</dt>
+                    <dd>Более крупная, чем библиотека, «заготовка» проекта со своей структурой и <strong>правилами</strong>.</dd>
+                </div>
+                <div class="term">
+                    <dt>Функция</dt>
+                    <dd>Именованный фрагмент кода, который можно вызвать несколько раз с разными аргументами.</dd>
+                </div>
+            </dl>
+        </section>
+    </main>
+
+    <!-- Подвал сайта (одинаковый на всех страницах) -->
+    <footer>
+        <nav class="footer-nav" aria-label="Разделы сайта">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+
+        <div class="footer-contacts">
+            <p>Телефон: <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
+            <p>Почта: <a href="mailto:author@example.com">author@example.com</a></p>
+        </div>
+
+        <p class="footer-copy">&copy; <span class="current-year">2026</span>. Учебный проект «Языки программирования».</p>
+    </footer>
+
+    <a href="#top" class="to-top" aria-label="Наверх">↑</a>
+</body>
+
+</html>

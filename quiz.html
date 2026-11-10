@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Тест для самопроверки по языкам программирования.">
+    <meta name="theme-color" content="#2b5b84">
+
+    <title>Тест — Языки программирования</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Шрифт: заранее устанавливаем соединение с серверами Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+    <!-- Шапка сайта (одинаковая на всех страницах) -->
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/favicon.svg" alt="" width="32" height="32">
+            <span>Языки программирования</span>
+        </a>
+        <div class="notify">
+            <button type="button" class="notify-btn" aria-label="Уведомления">
+                🔔
+                <span class="notify-count">4</span>
+            </button>
+            <div class="notify-list">
+                <ul>
+                    <li><a href="index.html#news-section" data-id="news"><span class="num">1</span>Свежие новости</a></li>
+                    <li><a href="examples.html" data-id="examples"><span class="num">2</span>Новые примеры кода</a></li>
+                    <li><a href="quiz.html" data-id="quiz"><span class="num">3</span>Проверьте себя в тесте</a></li>
+                    <li><a href="contacts.html" data-id="contacts"><span class="num">4</span>Предложите тему</a></li>
+                </ul>
+            </div>
+        </div>
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger" aria-label="Открыть меню"><span></span></label>
+
+        <nav class="main-nav" aria-label="Основное меню">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html" aria-current="page">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a href="index.html">Главная</a> <span aria-hidden="true">›</span> <span>Тест</span>
+        </nav>
+        <h1 id="top">Тест: насколько хорошо вы знаете языки</h1>
+        <p class="lead">Шесть вопросов по материалам сайта. Ответы можно найти в разделах
+            <a href="languages.html">«Языки»</a> и <a href="terms.html">«Термины»</a>.</p>
+
+        <section id="quiz-section">
+            <h2>Вопросы</h2>
+            <p id="quiz-best" class="filter-status"></p>
+            <form id="quiz-form" class="quiz-form">
+                <fieldset class="quiz-question" data-question="q1">
+                    <legend>1. Какой язык выполняется во всех браузерах без дополнительных плагинов?</legend>
+                    <label><input type="radio" name="q1" value="a" required> Python</label>
+                    <label><input type="radio" name="q1" value="b"> JavaScript</label>
+                    <label><input type="radio" name="q1" value="c"> C++</label>
+                </fieldset>
+                <fieldset class="quiz-question" data-question="q2">
+                    <legend>2. Кто создал язык Python?</legend>
+                    <label><input type="radio" name="q2" value="a" required> Гвидо ван Россум</label>
+                    <label><input type="radio" name="q2" value="b"> Деннис Ритчи</label>
+                    <label><input type="radio" name="q2" value="c"> Джеймс Гослинг</label>
+                </fieldset>
+                <fieldset class="quiz-question" data-question="q3">
+                    <legend>3. Какой язык появился раньше остальных?</legend>
+                    <label><input type="radio" name="q3" value="a" required> C++</label>
+                    <label><input type="radio" name="q3" value="b"> Java</label>
+                    <label><input type="radio" name="q3" value="c"> C</label>
+                </fieldset>
+                <fieldset class="quiz-question" data-question="q4">
+                    <legend>4. Чем компилятор отличается от интерпретатора?</legend>
+                    <label><input type="radio" name="q4" value="a" required> Переводит программу целиком до запуска</label>
+                    <label><input type="radio" name="q4" value="b"> Выполняет код построчно</label>
+                    <label><input type="radio" name="q4" value="c"> Ничем</label>
+                </fieldset>
+                <fieldset class="quiz-question" data-question="q5">
+                    <legend>5. На каком языке пишут скрипты для игрового движка Unity?</legend>
+                    <label><input type="radio" name="q5" value="a" required> Java</label>
+                    <label><input type="radio" name="q5" value="b"> C#</label>
+                    <label><input type="radio" name="q5" value="c"> C</label>
+                </fieldset>
+                <fieldset class="quiz-question" data-question="q6">
+                    <legend>6. Что такое фреймворк?</legend>
+                    <label><input type="radio" name="q6" value="a" required> Ошибка в программе</label>
+                    <label><input type="radio" name="q6" value="b"> Тип переменной</label>
+                    <label><input type="radio" name="q6" value="c"> Заготовка проекта со своей структурой</label>
+                </fieldset>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-lift">Проверить</button>
+                    <button type="reset" class="btn">Начать заново</button>
+                </div>
+            </form>
+            <p id="quiz-result" class="quiz-result" aria-live="polite" hidden></p>
+        </section>
+    </main>
+
+    <!-- Подвал сайта (одинаковый на всех страницах) -->
+    <footer>
+        <nav class="footer-nav" aria-label="Разделы сайта">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+
+        <div class="footer-contacts">
+            <p>Телефон: <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
+            <p>Почта: <a href="mailto:author@example.com">author@example.com</a></p>
+        </div>
+
+        <p class="footer-copy">&copy; <span class="current-year">2026</span>. Учебный проект «Языки программирования».</p>
+    </footer>
+
+    <a href="#top" class="to-top" aria-label="Наверх">↑</a>
+</body>
+
+</html>

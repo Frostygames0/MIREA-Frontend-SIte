@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Описание популярных языков программирования: Python, JavaScript, Java, C#, C++ и C. Фильтр по сферам применения.">
+    <meta name="theme-color" content="#2b5b84">
+
+    <title>Языки — Языки программирования</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Шрифт: заранее устанавливаем соединение с серверами Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+    <!-- Шапка сайта (одинаковая на всех страницах) -->
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/favicon.svg" alt="" width="32" height="32">
+            <span>Языки программирования</span>
+        </a>
+        <div class="notify">
+            <button type="button" class="notify-btn" aria-label="Уведомления">
+                🔔
+                <span class="notify-count">4</span>
+            </button>
+            <div class="notify-list">
+                <ul>
+                    <li><a href="index.html#news-section" data-id="news"><span class="num">1</span>Свежие новости</a></li>
+                    <li><a href="examples.html" data-id="examples"><span class="num">2</span>Новые примеры кода</a></li>
+                    <li><a href="quiz.html" data-id="quiz"><span class="num">3</span>Проверьте себя в тесте</a></li>
+                    <li><a href="contacts.html" data-id="contacts"><span class="num">4</span>Предложите тему</a></li>
+                </ul>
+            </div>
+        </div>
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger" aria-label="Открыть меню"><span></span></label>
+
+        <nav class="main-nav" aria-label="Основное меню">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html" aria-current="page">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a href="index.html">Главная</a> <span aria-hidden="true">›</span> <span>Языки</span>
+        </nav>
+        <h1 id="top">Популярные языки программирования</h1>
+        <p class="lead">Шесть языков из верхней части рейтинга TIOBE. Выберите сферу применения или введите
+            название, чтобы быстро найти нужный язык.</p>
+
+        <!-- Панель фильтра (показывается скриптом) -->
+        <div class="filter-panel" hidden>
+            <div class="filter-buttons" role="group" aria-label="Сфера применения">
+                <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">Все</button>
+                <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Веб</button>
+                <button type="button" class="filter-btn" data-filter="games" aria-pressed="false">Игры</button>
+                <button type="button" class="filter-btn" data-filter="data" aria-pressed="false">Данные и ИИ</button>
+                <button type="button" class="filter-btn" data-filter="mobile" aria-pressed="false">Мобильные</button>
+                <button type="button" class="filter-btn" data-filter="enterprise" aria-pressed="false">Корпоративные</button>
+                <button type="button" class="filter-btn" data-filter="system" aria-pressed="false">Системное ПО</button>
+            </div>
+            <label class="search-label">Поиск по названию или описанию:
+                <input type="search" id="lang-search" placeholder="Например, Python или игры">
+            </label>
+            <p id="lang-count" class="filter-status" aria-live="polite"></p>
+        </div>
+
+        <section id="languages-desc-section">
+            <h2>Описание языков</h2>
+            <div class="lang-list">
+                <article class="lang-card" id="python" data-tags="web data scripts">
+                    <img src="images/lang-logos/python.svg" alt="Логотип Python" width="60" height="60" loading="lazy" decoding="async">
+                    <h3>Python</h3>
+                    <p><strong>Python</strong> известен своим <em>простым и читаемым</em> синтаксисом. Популярен в анализе данных, ИИ и веб-разработке.</p>
+                    <dl class="lang-facts">
+                        <div><dt>Год появления</dt><dd>1991</dd></div>
+                        <div><dt>Автор</dt><dd>Гвидо ван Россум</dd></div>
+                        <div><dt>Типизация</dt><dd>динамическая, строгая</dd></div>
+                        <div><dt>Сферы</dt><dd>Веб, данные и ИИ, автоматизация</dd></div>
+                    </dl>
+                    <a class="lang-link" href="examples.html#ex-python">Пример кода →</a>
+                </article>
+                <article class="lang-card" id="js" data-tags="web mobile">
+                    <img src="images/lang-logos/js.svg" alt="Логотип JavaScript" width="60" height="60" loading="lazy" decoding="async">
+                    <h3>JavaScript</h3>
+                    <p><strong>JavaScript</strong> — <em>единственный язык</em>, который выполняется во всех браузерах. Используется как на фронтенде, так и на бэкенде (Node.js).</p>
+                    <dl class="lang-facts">
+                        <div><dt>Год появления</dt><dd>1995</dd></div>
+                        <div><dt>Автор</dt><dd>Брендан Эйх</dd></div>
+                        <div><dt>Типизация</dt><dd>динамическая, слабая</dd></div>
+                        <div><dt>Сферы</dt><dd>Веб, мобильные приложения</dd></div>
+                    </dl>
+                    <a class="lang-link" href="examples.html#ex-js">Пример кода →</a>
+                </article>
+                <article class="lang-card" id="java" data-tags="mobile enterprise">
+                    <img src="images/lang-logos/java.svg" alt="Логотип Java" width="60" height="60" loading="lazy" decoding="async">
+                    <h3>Java</h3>
+                    <p><strong>Java</strong> — язык с философией <em>«написано один раз — работает везде»</em>. Часто используется в корпоративной разработке и Android-приложениях.</p>
+                    <dl class="lang-facts">
+                        <div><dt>Год появления</dt><dd>1995</dd></div>
+                        <div><dt>Автор</dt><dd>Джеймс Гослинг</dd></div>
+                        <div><dt>Типизация</dt><dd>статическая, строгая</dd></div>
+                        <div><dt>Сферы</dt><dd>Мобильные приложения, корпоративные системы</dd></div>
+                    </dl>
+                    <a class="lang-link" href="examples.html#ex-java">Пример кода →</a>
+                </article>
+                <article class="lang-card" id="csharp" data-tags="games enterprise web">
+                    <img src="images/lang-logos/csharp.svg" alt="Логотип C#" width="60" height="60" loading="lazy" decoding="async">
+                    <h3>C#</h3>
+                    <p><strong>C#</strong> — язык от Microsoft, <em>строго типизированный</em> и объектно-ориентированный. Основа платформы .NET и разработки игр на Unity.</p>
+                    <dl class="lang-facts">
+                        <div><dt>Год появления</dt><dd>2000</dd></div>
+                        <div><dt>Автор</dt><dd>Андерс Хейлсберг</dd></div>
+                        <div><dt>Типизация</dt><dd>статическая, строгая</dd></div>
+                        <div><dt>Сферы</dt><dd>Игры, корпоративные системы, веб</dd></div>
+                    </dl>
+                    <a class="lang-link" href="examples.html#ex-csharp">Пример кода →</a>
+                </article>
+                <article class="lang-card" id="cpp" data-tags="games system">
+                    <img src="images/lang-logos/cpp.svg" alt="Логотип C++" width="60" height="60" loading="lazy" decoding="async">
+                    <h3>C++</h3>
+                    <p><strong>C++</strong> даёт <em>низкоуровневый</em> контроль над памятью и высокую скорость выполнения. Используется в играх, драйверах и системном ПО.</p>
+                    <dl class="lang-facts">
+                        <div><dt>Год появления</dt><dd>1985</dd></div>
+                        <div><dt>Автор</dt><dd>Бьёрн Страуструп</dd></div>
+                        <div><dt>Типизация</dt><dd>статическая</dd></div>
+                        <div><dt>Сферы</dt><dd>Игры, системное ПО</dd></div>
+                    </dl>
+                    <a class="lang-link" href="examples.html#ex-cpp">Пример кода →</a>
+                </article>
+                <article class="lang-card" id="c" data-tags="system">
+                    <img src="images/lang-logos/c.svg" alt="Логотип C" width="60" height="60" loading="lazy" decoding="async">
+                    <h3>C</h3>
+                    <p><strong>C</strong> — один из <em>старейших</em> языков программирования, лежащий в основе многих современных операционных систем.</p>
+                    <dl class="lang-facts">
+                        <div><dt>Год появления</dt><dd>1972</dd></div>
+                        <div><dt>Автор</dt><dd>Деннис Ритчи</dd></div>
+                        <div><dt>Типизация</dt><dd>статическая, слабая</dd></div>
+                        <div><dt>Сферы</dt><dd>Системное ПО, микроконтроллеры</dd></div>
+                    </dl>
+                    <a class="lang-link" href="examples.html#ex-c">Пример кода →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Сферы применения -->
+        <section id="applications-section">
+            <h2>Сферы применения языков</h2>
+            <ol>
+                <li>
+                    <strong>Python</strong>
+                    <ul>
+                        <li>Анализ данных и машинное обучение (<em>NumPy, Pandas, TensorFlow</em>)</li>
+                        <li>Веб-разработка (<em>Django, Flask</em>)</li>
+                        <li>Автоматизация и написание скриптов</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>JavaScript</strong>
+                    <ul>
+                        <li>Фронтенд-разработка (<em>React, Vue, Angular</em>)</li>
+                        <li>Серверные приложения (<em>Node.js, Express</em>)</li>
+                        <li>Мобильные приложения (<em>React Native</em>)</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Java</strong>
+                    <ul>
+                        <li>Android-приложения</li>
+                        <li>Корпоративные системы и банковское ПО</li>
+                        <li>Большие серверные приложения</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>C#</strong>
+                    <ul>
+                        <li>Разработка игр (<em>Unity</em>)</li>
+                        <li>Десктопные приложения на Windows</li>
+                        <li>Веб-сервисы на платформе <em>.NET</em></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>C++</strong>
+                    <ul>
+                        <li>Разработка игр (<em>Unreal Engine</em>)</li>
+                        <li>Системное программирование и драйверы</li>
+                        <li>Высокопроизводительные приложения</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>C</strong>
+                    <ul>
+                        <li>Операционные системы</li>
+                        <li>Программирование микроконтроллеров и embedded-систем</li>
+                        <li>Драйверы устройств</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Карта-изображение -->
+        <section id="images-section">
+            <h2>Карта языков</h2>
+            <p>Нажми на любую фигуру, чтобы перейти на официальный сайт языка:</p>
+            <div class="map-wrap">
+                <img src="images/langs-map.svg" alt="Карта языков программирования" width="500" height="220"
+                    usemap="#langsmap" loading="lazy" decoding="async">
+            </div>
+            <map name="langsmap">
+                <area shape="circle" coords="90,110,70" href="https://www.python.org/" alt="Python" target="_blank" rel="noopener">
+                <area shape="rect" coords="200,40,330,180" href="https://developer.mozilla.org/ru/docs/Web/JavaScript"
+                    alt="JavaScript" target="_blank" rel="noopener">
+                <area shape="poly" coords="420,30,480,180,360,180" href="https://isocpp.org/" alt="C++" target="_blank" rel="noopener">
+            </map>
+        </section>
+    </main>
+
+    <!-- Подвал сайта (одинаковый на всех страницах) -->
+    <footer>
+        <nav class="footer-nav" aria-label="Разделы сайта">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+
+        <div class="footer-contacts">
+            <p>Телефон: <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
+            <p>Почта: <a href="mailto:author@example.com">author@example.com</a></p>
+        </div>
+
+        <p class="footer-copy">&copy; <span class="current-year">2026</span>. Учебный проект «Языки программирования».</p>
+    </footer>
+
+    <a href="#top" class="to-top" aria-label="Наверх">↑</a>
+</body>
+
+</html>

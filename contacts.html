@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Форма обратной связи, карта проезда и видео о программировании.">
+    <meta name="theme-color" content="#2b5b84">
+
+    <title>Обратная связь — Языки программирования</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Шрифт: заранее устанавливаем соединение с серверами Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+    <!-- Шапка сайта (одинаковая на всех страницах) -->
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/favicon.svg" alt="" width="32" height="32">
+            <span>Языки программирования</span>
+        </a>
+        <div class="notify">
+            <button type="button" class="notify-btn" aria-label="Уведомления">
+                🔔
+                <span class="notify-count">4</span>
+            </button>
+            <div class="notify-list">
+                <ul>
+                    <li><a href="index.html#news-section" data-id="news"><span class="num">1</span>Свежие новости</a></li>
+                    <li><a href="examples.html" data-id="examples"><span class="num">2</span>Новые примеры кода</a></li>
+                    <li><a href="quiz.html" data-id="quiz"><span class="num">3</span>Проверьте себя в тесте</a></li>
+                    <li><a href="contacts.html" data-id="contacts"><span class="num">4</span>Предложите тему</a></li>
+                </ul>
+            </div>
+        </div>
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger" aria-label="Открыть меню"><span></span></label>
+
+        <nav class="main-nav" aria-label="Основное меню">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html" aria-current="page">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a href="index.html">Главная</a> <span aria-hidden="true">›</span> <span>Обратная связь</span>
+        </nav>
+        <h1 id="top">Обратная связь</h1>
+        <p class="lead">Заполните форму, чтобы предложить тему или язык для разбора.</p>
+
+        <section id="form-section">
+            <h2>Форма обратной связи</h2>
+            <p>Поля, отмеченные звёздочкой, обязательны для заполнения.</p>
+
+            <form class="feedback-form" action="" method="post">
+
+                <fieldset>
+                    <legend>Личные данные</legend>
+                    <p>
+                        <label for="user-name">Имя:</label>
+                        <input type="text" id="user-name" name="user-name" placeholder="Иван Иванов" autocomplete="name"
+                            pattern="[А-Яа-яЁёA-Za-z\s\-]{2,40}" title="Только буквы, от 2 до 40 символов" required>
+                    </p>
+                    <p>
+                        <label for="user-phone">Телефон:</label>
+                        <input type="tel" id="user-phone" name="user-phone" placeholder="+7 (900) 123-45-67" autocomplete="tel"
+                            pattern="\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}" title="Формат: +7 (900) 123-45-67"
+                            required>
+                    </p>
+                    <p>
+                        <label for="user-email">Email:</label>
+                        <input type="email" id="user-email" name="user-email" placeholder="name@example.com" autocomplete="email" required>
+                    </p>
+                    <p>
+                        <label for="user-pass">Пароль (от 6 до 16 символов):</label>
+                        <input type="password" id="user-pass" name="user-pass" placeholder="Придумайте пароль"
+                            minlength="6" maxlength="16" autocomplete="new-password" required>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Ваш уровень в программировании</legend>
+                    <label><input type="radio" name="level" value="beginner" checked> Новичок</label>
+                    <label><input type="radio" name="level" value="middle"> Средний</label>
+                    <label><input type="radio" name="level" value="pro"> Профессионал</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Языки</legend>
+                    <p>
+                        <label for="fav-lang">Любимый язык:</label>
+                        <select id="fav-lang" name="fav-lang" required>
+                            <option value="">-- Выберите язык --</option>
+                            <option value="python">Python</option>
+                            <option value="js">JavaScript</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="cpp">C++</option>
+                            <option value="c">C</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="learn-langs">Что хотите изучать (Ctrl + клик для нескольких):</label>
+                        <select id="learn-langs" name="learn-langs" multiple size="4">
+                            <option value="python" selected>Python</option>
+                            <option value="js">JavaScript</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="cpp">C++</option>
+                            <option value="c">C</option>
+                        </select>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Дополнительно</legend>
+                    <p>
+                        <label for="meet-time">Удобное время для связи:</label>
+                        <input type="datetime-local" id="meet-time" name="meet-time" min="2026-01-01T09:00"
+                            max="2026-12-31T21:00" required>
+                    </p>
+                    <p>
+                        <label for="user-file">Приложить файл:</label>
+                        <input type="file" id="user-file" name="user-file">
+                    </p>
+                    <p>
+                        <label for="user-msg">Сообщение (от 10 до 300 символов):</label><br>
+                        <textarea id="user-msg" name="user-msg" cols="40" rows="6" minlength="10" maxlength="300"
+                            placeholder="Расскажите, что вам интересно..." required></textarea>
+                        <span class="char-counter" aria-live="polite"></span>
+                    </p>
+                </fieldset>
+
+                <p>
+                    <label><input type="checkbox" name="agree" checked required> Согласен на обработку данных</label>
+                </p>
+
+                <div class="form-buttons">
+                    <input type="submit" value="Отправить">
+                    <button type="reset">Очистить</button>
+                </div>
+            </form>
+            <div class="form-success" role="status" hidden></div>
+        </section>
+
+        <section id="map-section">
+            <h2>Как нас найти</h2>
+            <iframe class="embed-map" title="Карта проезда" height="450" loading="lazy"
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A90da139a8942dd90bd7fe274c19958795c28e57b029d4e1edc62b15b2093c8ee&amp;source=constructor"></iframe>
+        </section>
+
+        <section id="video-section">
+            <h2>Видео по теме</h2>
+            <figure class="video-card">
+                <iframe class="embed-video" title="Видео про программирование"
+                    src="https://www.youtube.com/embed/zTic41coJEM?si=HWCtlqEYeejejkuU" loading="lazy" allowfullscreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <figcaption class="video-caption">
+                    <h3>Программирование за 10 минут</h3>
+                    <p>Короткое видео о том, с чего начинают разработчики.</p>
+                </figcaption>
+            </figure>
+        </section>
+    </main>
+
+    <!-- Подвал сайта (одинаковый на всех страницах) -->
+    <footer>
+        <nav class="footer-nav" aria-label="Разделы сайта">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+
+        <div class="footer-contacts">
+            <p>Телефон: <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
+            <p>Почта: <a href="mailto:author@example.com">author@example.com</a></p>
+        </div>
+
+        <p class="footer-copy">&copy; <span class="current-year">2026</span>. Учебный проект «Языки программирования».</p>
+    </footer>
+
+    <a href="#top" class="to-top" aria-label="Наверх">↑</a>
+</body>
+
+</html>

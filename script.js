@@ -1,0 +1,427 @@
+'use strict';
+
+/* ===== Работа с localStorage (с защитой от ошибок в приватном режиме) ===== */
+function loadData(key, fallback) {
+    try {
+        const value = localStorage.getItem(key);
+        return value === null ? fallback : JSON.parse(value);
+    } catch {
+        return fallback;
+    }
+}
+
+function saveData(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+        /* хранилище недоступно — просто не сохраняем */
+    }
+}
+
+/* ===== Общие модули для всех страниц ===== */
+
+// Кнопка «Наверх» появляется после прокрутки на 300 px
+function initToTop() {
+    const toTop = document.querySelector('.to-top');
+    if (!toTop) return;
+    const update = () => toTop.classList.toggle('visible', window.scrollY > 300);
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+}
+
+// Бургер-меню закрывается по клику на пункт, по Escape и по клику вне меню
+function initBurger() {
+    const toggle = document.querySelector('.burger-toggle');
+    const nav = document.querySelector('.main-nav');
+    if (!toggle || !nav) return;
+
+    nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => { toggle.checked = false; });
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') toggle.checked = false;
+    });
+    document.addEventListener('click', (event) => {
+        if (toggle.checked && !event.target.closest('.main-nav, .burger, .burger-toggle')) {
+            toggle.checked = false;
+        }
+    });
+}
+
+// Уведомления: прочитанные запоминаются, счётчик уменьшается
+function initNotifications() {
+    const counter = document.querySelector('.notify-count');
+    const links = document.querySelectorAll('.notify-list a');
+    if (!counter) return;
+
+    const read = new Set(loadData('readNotifications', []));
+    const render = () => {
+        let unread = 0;
+        links.forEach((link) => {
+            const isRead = read.has(link.dataset.id);
+            link.classList.toggle('is-read', isRead);
+            if (!isRead) unread++;
+        });
+        counter.textContent = unread;
+        counter.hidden = unread === 0;
+    };
+
+    links.forEach((link) => {
+        link.addEventListener('click', () => {
+            read.add(link.dataset.id);
+            saveData('readNotifications', [...read]);
+            render();
+        });
+    });
+    render();
+}
+
+// Текущий год в подвале
+function initYear() {
+    const year = new Date().getFullYear();
+    document.querySelectorAll('.current-year').forEach((el) => { el.textContent = year; });
+}
+
+/* ===== Главная: раскрытие текста новости ===== */
+function initNews() {
+    document.querySelectorAll('.news-element').forEach((news) => {
+        const text = news.querySelector('.news-text p');
+        const button = news.querySelector('.news-more');
+        if (!text || !button) return;
+        // Кнопка нужна, только если текст действительно обрезан
+        if (text.scrollHeight <= text.clientHeight + 1) return;
+        button.hidden = false;
+        button.addEventListener('click', () => {
+            const expanded = news.classList.toggle('expanded');
+            button.textContent = expanded ? 'Свернуть' : 'Читать полностью';
+            button.setAttribute('aria-expanded', expanded);
+        });
+    });
+}
+
+/* ===== Языки: фильтр по сфере и поиск ===== */
+function initLanguageFilter() {
+    const panel = document.querySelector('.filter-panel');
+    if (!panel) return;
+    const cards = document.querySelectorAll('.lang-card');
+    const buttons = panel.querySelectorAll('.filter-btn');
+    const search = panel.querySelector('#lang-search');
+    const status = panel.querySelector('#lang-count');
+    let category = 'all';
+
+    const apply = () => {
+        const query = search.value.trim().toLowerCase();
+        let shown = 0;
+        cards.forEach((card) => {
+            const tags = card.dataset.tags.split(' ');
+            const matchCategory = category === 'all' || tags.includes(category);
+            const matchText = card.textContent.toLowerCase().includes(query);
+            card.hidden = !(matchCategory && matchText);
+            if (!card.hidden) shown++;
+        });
+        status.textContent = shown > 0 ? `Найдено языков: ${shown}` : 'Ничего не найдено';
+    };
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            category = button.dataset.filter;
+            buttons.forEach((b) => b.setAttribute('aria-pressed', b === button));
+            apply();
+        });
+    });
+    search.addEventListener('input', apply);
+
+    panel.hidden = false;
+    apply();
+}
+
+/* ===== Примеры кода: вкладки ===== */
+function initTabs() {
+    document.querySelectorAll('.tabs').forEach((tabs) => {
+        const list = tabs.querySelector('[role="tablist"]');
+        const buttons = [...tabs.querySelectorAll('[role="tab"]')];
+        if (!list || buttons.length === 0) return;
+
+        const select = (active, updateHash) => {
+            buttons.forEach((button) => {
+                const isActive = button === active;
+                button.setAttribute('aria-selected', isActive);
+                button.tabIndex = isActive ? 0 : -1;
+                document.getElementById(button.getAttribute('aria-controls')).hidden = !isActive;
+            });
+            if (updateHash) history.replaceState(null, '', '#' + active.getAttribute('aria-controls'));
+        };
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => select(button, true));
+            // Переключение стрелками влево/вправо
+            button.addEventListener('keydown', (event) => {
+                if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+                const step = event.key === 'ArrowRight' ? 1 : -1;
+                const next = buttons[(index + step + buttons.length) % buttons.length];
+                next.focus();
+                select(next, true);
+            });
+        });
+
+        // Открываем вкладку из адреса (например, examples.html#ex-python)
+        const fromHash = buttons.find((b) => '#' + b.getAttribute('aria-controls') === location.hash);
+        list.hidden = false;
+        select(fromHash || buttons[0], false);
+    });
+}
+
+/* ===== Примеры кода: копирование в буфер обмена ===== */
+function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+    }
+    // Запасной вариант для старых браузеров и страниц без HTTPS
+    return new Promise((resolve, reject) => {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.append(area);
+        area.select();
+        const ok = document.execCommand('copy');
+        area.remove();
+        ok ? resolve() : reject(new Error('copy failed'));
+    });
+}
+
+function initCopyButtons() {
+    document.querySelectorAll('pre.code').forEach((pre) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrap';
+        pre.before(wrapper);
+        wrapper.append(pre);
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'copy-btn';
+        button.textContent = 'Копировать';
+        wrapper.append(button);
+
+        button.addEventListener('click', () => {
+            copyText(pre.textContent)
+                .then(() => { button.textContent = 'Скопировано!'; })
+                .catch(() => { button.textContent = 'Ошибка'; })
+                .finally(() => setTimeout(() => { button.textContent = 'Копировать'; }, 1500));
+        });
+    });
+}
+
+/* ===== Термины: поиск с подсветкой ===== */
+function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+}
+
+function initTermSearch() {
+    const box = document.querySelector('.terms-search');
+    if (!box) return;
+    const input = box.querySelector('#term-search');
+    const status = box.querySelector('#term-count');
+    const terms = document.querySelectorAll('.term');
+    terms.forEach((term) => {
+        const dt = term.querySelector('dt');
+        dt.dataset.original = dt.textContent;
+    });
+
+    const apply = () => {
+        const query = input.value.trim().toLowerCase();
+        let shown = 0;
+        terms.forEach((term) => {
+            const dt = term.querySelector('dt');
+            const title = dt.dataset.original;
+            const match = term.textContent.toLowerCase().includes(query);
+            term.hidden = !match;
+            if (match) shown++;
+
+            const pos = query ? title.toLowerCase().indexOf(query) : -1;
+            dt.innerHTML = pos === -1
+                ? escapeHtml(title)
+                : escapeHtml(title.slice(0, pos)) + '<mark>' + escapeHtml(title.slice(pos, pos + query.length)) +
+                  '</mark>' + escapeHtml(title.slice(pos + query.length));
+        });
+        status.textContent = shown > 0 ? `Найдено терминов: ${shown} из ${terms.length}` : 'Ничего не найдено';
+    };
+
+    input.addEventListener('input', apply);
+    box.hidden = false;
+    apply();
+}
+
+/* ===== Тест ===== */
+const QUIZ_ANSWERS = { q1: 'b', q2: 'a', q3: 'c', q4: 'a', q5: 'b', q6: 'c' };
+
+function initQuiz() {
+    const form = document.querySelector('#quiz-form');
+    if (!form) return;
+    const result = document.querySelector('#quiz-result');
+    const best = document.querySelector('#quiz-best');
+    const total = Object.keys(QUIZ_ANSWERS).length;
+
+    const showBest = () => {
+        const score = loadData('quizBest', null);
+        best.textContent = score === null
+            ? 'Вы ещё не проходили тест.'
+            : `Ваш лучший результат: ${score} из ${total}.`;
+    };
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let score = 0;
+        for (const [name, correct] of Object.entries(QUIZ_ANSWERS)) {
+            const question = form.querySelector(`[data-question="${name}"]`);
+            const isCorrect = form.elements[name].value === correct;
+            question.classList.toggle('correct', isCorrect);
+            question.classList.toggle('wrong', !isCorrect);
+            if (isCorrect) score++;
+        }
+
+        let comment = 'Стоит перечитать разделы «Языки» и «Термины».';
+        if (score === total) comment = 'Отлично, все ответы верные!';
+        else if (score >= total / 2) comment = 'Хороший результат!';
+
+        result.textContent = `Правильных ответов: ${score} из ${total}. ${comment}`;
+        result.hidden = false;
+        saveData('quizBest', Math.max(score, loadData('quizBest', 0)));
+        showBest();
+        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    form.addEventListener('reset', () => {
+        form.querySelectorAll('.quiz-question').forEach((q) => q.classList.remove('correct', 'wrong'));
+        result.hidden = true;
+    });
+
+    showBest();
+}
+
+/* ===== Форма обратной связи ===== */
+function formatPhone(value) {
+    let digits = value.replace(/\D/g, '');
+    if (digits === '') return '';
+    if (digits[0] === '8') digits = '7' + digits.slice(1);
+    if (digits[0] !== '7') digits = '7' + digits;
+    const rest = digits.slice(1, 11);
+
+    let result = '+7';
+    if (rest.length > 0) result += ' (' + rest.slice(0, 3);
+    if (rest.length > 3) result += ') ' + rest.slice(3, 6);
+    if (rest.length > 6) result += '-' + rest.slice(6, 8);
+    if (rest.length > 8) result += '-' + rest.slice(8, 10);
+    return result;
+}
+
+function getErrorMessage(field) {
+    const v = field.validity;
+    if (v.valueMissing) return field.type === 'checkbox' ? 'Необходимо ваше согласие' : 'Заполните это поле';
+    if (v.typeMismatch) return 'Введите корректный адрес, например name@example.com';
+    if (v.patternMismatch) return field.title;
+    if (v.tooShort) return `Минимум ${field.minLength} символов (сейчас ${field.value.length})`;
+    if (v.rangeUnderflow || v.rangeOverflow) return 'Выберите дату в 2026 году';
+    return field.validationMessage;
+}
+
+function showFieldError(field) {
+    const container = field.closest('p') || field.parentElement;
+    let error = container.querySelector('.field-error');
+    if (field.validity.valid) {
+        field.classList.remove('invalid');
+        field.removeAttribute('aria-invalid');
+        if (error) error.remove();
+        return true;
+    }
+    if (!error) {
+        error = document.createElement('span');
+        error.className = 'field-error';
+        error.id = field.id ? field.id + '-error' : '';
+        container.append(error);
+    }
+    error.textContent = getErrorMessage(field);
+    field.classList.add('invalid');
+    field.setAttribute('aria-invalid', 'true');
+    if (error.id) field.setAttribute('aria-describedby', error.id);
+    return false;
+}
+
+function initFeedbackForm() {
+    const form = document.querySelector('.feedback-form');
+    if (!form) return;
+    const success = document.querySelector('.form-success');
+    const phone = form.querySelector('#user-phone');
+    const message = form.querySelector('#user-msg');
+    const counter = form.querySelector('.char-counter');
+    const fields = [...form.querySelectorAll('input, select, textarea')]
+        .filter((f) => f.type !== 'submit' && f.type !== 'reset');
+    // Пароль и файл в черновик не сохраняем
+    const draftFields = ['user-name', 'user-phone', 'user-email', 'fav-lang', 'meet-time', 'user-msg'];
+
+    form.noValidate = true;
+
+    const updateCounter = () => {
+        counter.textContent = `${message.value.length} / ${message.maxLength}`;
+    };
+
+    const saveDraft = () => {
+        const draft = {};
+        draftFields.forEach((id) => { draft[id] = form.querySelector('#' + id).value; });
+        saveData('feedbackDraft', draft);
+    };
+
+    const draft = loadData('feedbackDraft', {});
+    draftFields.forEach((id) => {
+        if (draft[id]) form.querySelector('#' + id).value = draft[id];
+    });
+    updateCounter();
+
+    phone.addEventListener('input', () => { phone.value = formatPhone(phone.value); });
+    message.addEventListener('input', updateCounter);
+    form.addEventListener('input', saveDraft);
+
+    // Ошибку показываем после ухода из поля, а затем обновляем при вводе
+    fields.forEach((field) => {
+        field.addEventListener('blur', () => showFieldError(field));
+        field.addEventListener('input', () => {
+            if (field.classList.contains('invalid')) showFieldError(field);
+        });
+    });
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const invalid = fields.filter((field) => !showFieldError(field));
+        if (invalid.length > 0) {
+            invalid[0].focus();
+            return;
+        }
+        const name = form.querySelector('#user-name').value.trim();
+        success.textContent = `Спасибо, ${name}! Ваше сообщение принято, мы свяжемся с вами в выбранное время.`;
+        success.hidden = false;
+        form.reset();
+    });
+
+    form.addEventListener('reset', () => {
+        try { localStorage.removeItem('feedbackDraft'); } catch { /* недоступно */ }
+        form.querySelectorAll('.field-error').forEach((e) => e.remove());
+        fields.forEach((f) => { f.classList.remove('invalid'); f.removeAttribute('aria-invalid'); });
+        // Событие reset срабатывает до очистки полей, поэтому счётчик обновляем позже
+        setTimeout(updateCounter);
+    });
+}
+
+/* ===== Запуск ===== */
+document.addEventListener('DOMContentLoaded', () => {
+    initToTop();
+    initBurger();
+    initNotifications();
+    initYear();
+    initNews();
+    initLanguageFilter();
+    initTabs();
+    initCopyButtons();
+    initTermSearch();
+    initQuiz();
+    initFeedbackForm();
+});

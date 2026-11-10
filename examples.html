@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Примеры кода на Python, JavaScript, Java, C#, C++ и C: Hello, World и цикл.">
+    <meta name="theme-color" content="#2b5b84">
+
+    <title>Примеры кода — Языки программирования</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <!-- Шрифт: заранее устанавливаем соединение с серверами Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+    <!-- Шапка сайта (одинаковая на всех страницах) -->
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/favicon.svg" alt="" width="32" height="32">
+            <span>Языки программирования</span>
+        </a>
+        <div class="notify">
+            <button type="button" class="notify-btn" aria-label="Уведомления">
+                🔔
+                <span class="notify-count">4</span>
+            </button>
+            <div class="notify-list">
+                <ul>
+                    <li><a href="index.html#news-section" data-id="news"><span class="num">1</span>Свежие новости</a></li>
+                    <li><a href="examples.html" data-id="examples"><span class="num">2</span>Новые примеры кода</a></li>
+                    <li><a href="quiz.html" data-id="quiz"><span class="num">3</span>Проверьте себя в тесте</a></li>
+                    <li><a href="contacts.html" data-id="contacts"><span class="num">4</span>Предложите тему</a></li>
+                </ul>
+            </div>
+        </div>
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger" aria-label="Открыть меню"><span></span></label>
+
+        <nav class="main-nav" aria-label="Основное меню">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html" aria-current="page">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a href="index.html">Главная</a> <span aria-hidden="true">›</span> <span>Примеры кода</span>
+        </nav>
+        <h1 id="top">Примеры кода</h1>
+        <p class="lead">Одна и та же задача — вывести приветствие и посчитать сумму чисел от 1 до 10 — на шести
+            языках. Так легче сравнить их синтаксис.</p>
+
+        <section id="examples-section" class="tabs">
+            <h2>Выберите язык</h2>
+            <div class="tab-list" role="tablist" aria-label="Языки программирования" hidden>
+                <button type="button" role="tab" id="tab-python" aria-controls="ex-python" aria-selected="false">Python</button>
+                <button type="button" role="tab" id="tab-js" aria-controls="ex-js" aria-selected="false">JavaScript</button>
+                <button type="button" role="tab" id="tab-java" aria-controls="ex-java" aria-selected="false">Java</button>
+                <button type="button" role="tab" id="tab-csharp" aria-controls="ex-csharp" aria-selected="false">C#</button>
+                <button type="button" role="tab" id="tab-cpp" aria-controls="ex-cpp" aria-selected="false">C++</button>
+                <button type="button" role="tab" id="tab-c" aria-controls="ex-c" aria-selected="false">C</button>
+            </div>
+            <article class="code-example" id="ex-python" role="tabpanel" aria-labelledby="tab-python">
+                <h3>Python</h3>
+                <p>Вывод строки «Hello, World!» и сумма чисел от 1 до 10:</p>
+                <pre class="code"><code>print("Hello, World!")
+
+total = 0
+for i in range(1, 11):
+    total += i
+print("Сумма:", total)</code></pre>
+                <p>Особенности синтаксиса:</p>
+                <ul>
+                    <li>Отступы вместо фигурных скобок.</li>
+                    <li>Двоеточие перед блоком кода.</li>
+                    <li>Динамическая типизация переменных.</li>
+                </ul>
+                <a href="languages.html#python">Подробнее о языке Python →</a>
+            </article>
+            <article class="code-example" id="ex-js" role="tabpanel" aria-labelledby="tab-js">
+                <h3>JavaScript</h3>
+                <p>Вывод строки «Hello, World!» и сумма чисел от 1 до 10:</p>
+                <pre class="code"><code>console.log("Hello, World!");
+
+let total = 0;
+for (let i = 1; i &lt;= 10; i++) {
+    total += i;
+}
+console.log("Сумма:", total);</code></pre>
+                <p>Особенности синтаксиса:</p>
+                <ul>
+                    <li>Точка с запятой в конце строки (необязательна).</li>
+                    <li>Фигурные скобки для блоков кода.</li>
+                    <li>Выполняется прямо в браузере.</li>
+                </ul>
+                <a href="languages.html#js">Подробнее о языке JavaScript →</a>
+            </article>
+            <article class="code-example" id="ex-java" role="tabpanel" aria-labelledby="tab-java">
+                <h3>Java</h3>
+                <p>Вывод строки «Hello, World!» и сумма чисел от 1 до 10:</p>
+                <pre class="code"><code>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+
+        int total = 0;
+        for (int i = 1; i &lt;= 10; i++) {
+            total += i;
+        }
+        System.out.println("Сумма: " + total);
+    }
+}</code></pre>
+                <p>Особенности синтаксиса:</p>
+                <ul>
+                    <li>Весь код находится внутри классов.</li>
+                    <li>Тип переменной указывается явно.</li>
+                    <li>Программа компилируется в байт-код для JVM.</li>
+                </ul>
+                <a href="languages.html#java">Подробнее о языке Java →</a>
+            </article>
+            <article class="code-example" id="ex-csharp" role="tabpanel" aria-labelledby="tab-csharp">
+                <h3>C#</h3>
+                <p>Вывод строки «Hello, World!» и сумма чисел от 1 до 10:</p>
+                <pre class="code"><code>Console.WriteLine("Hello, World!");
+
+int total = 0;
+for (int i = 1; i &lt;= 10; i++)
+{
+    total += i;
+}
+Console.WriteLine($"Сумма: {total}");</code></pre>
+                <p>Особенности синтаксиса:</p>
+                <ul>
+                    <li>Программу можно писать без явного класса Main.</li>
+                    <li>Интерполяция строк через символ $.</li>
+                    <li>Фигурные скобки обычно переносят на новую строку.</li>
+                </ul>
+                <a href="languages.html#csharp">Подробнее о языке C# →</a>
+            </article>
+            <article class="code-example" id="ex-cpp" role="tabpanel" aria-labelledby="tab-cpp">
+                <h3>C++</h3>
+                <p>Вывод строки «Hello, World!» и сумма чисел от 1 до 10:</p>
+                <pre class="code"><code>#include &lt;iostream&gt;
+
+int main() {
+    std::cout &lt;&lt; "Hello, World!" &lt;&lt; std::endl;
+
+    int total = 0;
+    for (int i = 1; i &lt;= 10; i++) {
+        total += i;
+    }
+    std::cout &lt;&lt; "Сумма: " &lt;&lt; total &lt;&lt; std::endl;
+    return 0;
+}</code></pre>
+                <p>Особенности синтаксиса:</p>
+                <ul>
+                    <li>Подключение библиотек через #include.</li>
+                    <li>Вывод через поток std::cout и оператор &lt;&lt;.</li>
+                    <li>Программа компилируется в машинный код.</li>
+                </ul>
+                <a href="languages.html#cpp">Подробнее о языке C++ →</a>
+            </article>
+            <article class="code-example" id="ex-c" role="tabpanel" aria-labelledby="tab-c">
+                <h3>C</h3>
+                <p>Вывод строки «Hello, World!» и сумма чисел от 1 до 10:</p>
+                <pre class="code"><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    printf("Hello, World!\n");
+
+    int total = 0;
+    for (int i = 1; i &lt;= 10; i++) {
+        total += i;
+    }
+    printf("Сумма: %d\n", total);
+    return 0;
+}</code></pre>
+                <p>Особенности синтаксиса:</p>
+                <ul>
+                    <li>Форматированный вывод через printf.</li>
+                    <li>Нет классов и объектов.</li>
+                    <li>Ручное управление памятью.</li>
+                </ul>
+                <a href="languages.html#c">Подробнее о языке C →</a>
+            </article>
+        </section>
+    </main>
+
+    <!-- Подвал сайта (одинаковый на всех страницах) -->
+    <footer>
+        <nav class="footer-nav" aria-label="Разделы сайта">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="languages.html">Языки</a></li>
+                <li><a href="examples.html">Примеры кода</a></li>
+                <li><a href="terms.html">Термины</a></li>
+                <li><a href="quiz.html">Тест</a></li>
+                <li><a href="contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+
+        <div class="footer-contacts">
+            <p>Телефон: <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
+            <p>Почта: <a href="mailto:author@example.com">author@example.com</a></p>
+        </div>
+
+        <p class="footer-copy">&copy; <span class="current-year">2026</span>. Учебный проект «Языки программирования».</p>
+    </footer>
+
+    <a href="#top" class="to-top" aria-label="Наверх">↑</a>
+</body>
+
+</html>
