@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Классный сайт про языки программирования">
 
     <!-- Тител -->
@@ -20,13 +21,32 @@
             <img src="images/favicon.svg" alt="Логотип сайта" width="32" height="32">
             <span>Языки программирования</span>
         </a>
+        <div class="notify">
+            <button type="button" class="notify-btn" aria-label="Уведомления">
+                🔔
+                <span class="notify-count">4</span>
+            </button>
+            <div class="notify-list">
+                <ul>
+                    <li><a href="#news-section"><span class="num">1</span>Свежие новости</a></li>
+                    <li><a href="#examples-section"><span class="num">2</span>Новые примеры кода</a></li>
+                    <li><a href="#cards-section"><span class="num">3</span>Что изучать дальше</a></li>
+                    <li><a href="#gallery-section"><span class="num">4</span>Галерея языков</a></li>
+                </ul>
+            </div>
+        </div>
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger" aria-label="Открыть меню"><span></span></label>
+
         <nav class="main-nav">
             <ul>
                 <li><a href="#news-section">Новости</a></li>
                 <li><a href="#languages-desc-section">Языки</a></li>
                 <li><a href="#examples-section">Примеры кода</a></li>
                 <li><a href="#terms-section">Термины</a></li>
+                <li><a href="#buttons-section">Кнопки</a></li>
                 <li><a href="#images-section">Изображения</a></li>
+                <li><a href="#gallery-section">Галерея</a></li>
                 <li><a href="#form-section">Форма</a></li>
             </ul>
         </nav>
@@ -181,11 +201,30 @@
                 </p>
             </article>
         </section>
+        <div class="layout-row">
+            <!-- Секция с заметками (B) -->
+            <section id="notes-section" class="layout-main">
+                <h2>Заметки о языках</h2>
+                <p>
+                    <i>C</i> появился раньше остальных языков в этом списке.
+                    <u>Не путай</u> его с <b>C++</b> — это разные языки, хотя второй и вырос из первого.
+                </p>
+                <p>
+                    <abbr title="Интегрированная среда разработки">IDE</abbr> — программа для удобного написания и
+                    отладки
+                    кода.
+                    Сложность алгоритмов часто обозначают как O(n<sup>2</sup>), а к элементу массива обращаются
+                    через индекс a<sub>i</sub>.
+                </p>
+                <blockquote>Talk is cheap. Show me the code.</blockquote>
+                <p>— Линус Торвальдс, создатель Linux и Git</p>
+                <p>
+                    Подробнее о принципах чистого кода можно прочитать в книге
+                    <cite>«Чистый код»</cite> Роберта Мартина.
+                </p>
+            </section>
 
-
-        <!-- Секция с заметками -->
-        <section id="notes-section">
-            <h2>Заметки о языках</h2>
+            <!-- Боковая панель (E) -->
             <aside class="fact-box side-panel">
                 <h3>Знаете ли вы?</h3>
                 <p>Python назван в честь британского шоу «Монти Пайтон», а не в честь змеи.</p>
@@ -197,91 +236,78 @@
                     <li><a href="#terms-section">Термины</a></li>
                 </ul>
             </aside>
-            <p>
-                <i>C</i> появился раньше остальных языков в этом списке.
-                <u>Не путай</u> его с <b>C++</b> — это разные языки, хотя второй и вырос из первого.
-            </p>
-            <p>
-                <abbr title="Интегрированная среда разработки">IDE</abbr> — программа для удобного написания и отладки
-                кода.
-                Сложность алгоритмов часто обозначают как O(n<sup>2</sup>), а к элементу массива обращаются
-                через индекс a<sub>i</sub>.
-            </p>
-            <blockquote>Talk is cheap. Show me the code.</blockquote>
-            <p>— Линус Торвальдс, создатель Linux и Git</p>
-            <p>
-                Подробнее о принципах чистого кода можно прочитать в книге
-                <cite>«Чистый код»</cite> Роберта Мартина.
-            </p>
-        </section>
+        </div>
 
-        <!-- Секция с топом языков по TIOBE -->
-        <section id="top-languages-section">
-            <h2>Топ языков программирования</h2>
-            <p>На основе индекса <a href="https://www.tiobe.com/tiobe-index/">TIOBE 2026</a></p>
-            <ol>
-                <li>Python</li>
-                <li>C</li>
-                <li>C++</li>
-                <li>Java</li>
-                <li>C#</li>
-                <li>JavaScript</li>
-            </ol>
-        </section>
-        <!-- Секция с сферами применения -->
-        <section id="applications-section">
-            <h2>Сферы применения языков</h2>
-            <ol>
-                <li>
-                    <strong>Python</strong>
-                    <ul>
-                        <li>Анализ данных и машинное обучение (<em>NumPy, Pandas, TensorFlow</em>)</li>
-                        <li>Веб-разработка (<em>Django, Flask</em>)</li>
-                        <li>Автоматизация и написание скриптов</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>JavaScript</strong>
-                    <ul>
-                        <li>Фронтенд-разработка (<em>React, Vue, Angular</em>)</li>
-                        <li>Серверные приложения (<em>Node.js, Express</em>)</li>
-                        <li>Мобильные приложения (<em>React Native</em>)</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Java</strong>
-                    <ul>
-                        <li>Android-приложения</li>
-                        <li>Корпоративные системы и банковское ПО</li>
-                        <li>Большие серверные приложения</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>C#</strong>
-                    <ul>
-                        <li>Разработка игр (<em>Unity</em>)</li>
-                        <li>Десктопные приложения на Windows</li>
-                        <li>Веб-сервисы на платформе <em>.NET</em></li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>C++</strong>
-                    <ul>
-                        <li>Разработка игр (<em>Unreal Engine</em>)</li>
-                        <li>Системное программирование и драйверы</li>
-                        <li>Высокопроизводительные приложения</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>C</strong>
-                    <ul>
-                        <li>Операционные системы</li>
-                        <li>Программирование микроконтроллеров и embedded-систем</li>
-                        <li>Драйверы устройств</li>
-                    </ul>
-                </li>
-            </ol>
-        </section>
+        <!-- Нижний ряд макета: C (топ языков) и D (сферы применения) -->
+        <div class="layout-row layout-cd">
+            <!-- Секция с топом языков по TIOBE (С) -->
+            <section id="top-languages-section">
+                <h2>Топ языков программирования</h2>
+                <p>На основе индекса <a href="https://www.tiobe.com/tiobe-index/">TIOBE 2026</a></p>
+                <ol>
+                    <li>Python</li>
+                    <li>C</li>
+                    <li>C++</li>
+                    <li>Java</li>
+                    <li>C#</li>
+                    <li>JavaScript</li>
+                </ol>
+            </section>
+            <!-- Секция с сферами применения -->
+            <section id="applications-section">
+                <h2>Сферы применения языков</h2>
+                <ol>
+                    <li>
+                        <strong>Python</strong>
+                        <ul>
+                            <li>Анализ данных и машинное обучение (<em>NumPy, Pandas, TensorFlow</em>)</li>
+                            <li>Веб-разработка (<em>Django, Flask</em>)</li>
+                            <li>Автоматизация и написание скриптов</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>JavaScript</strong>
+                        <ul>
+                            <li>Фронтенд-разработка (<em>React, Vue, Angular</em>)</li>
+                            <li>Серверные приложения (<em>Node.js, Express</em>)</li>
+                            <li>Мобильные приложения (<em>React Native</em>)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Java</strong>
+                        <ul>
+                            <li>Android-приложения</li>
+                            <li>Корпоративные системы и банковское ПО</li>
+                            <li>Большие серверные приложения</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>C#</strong>
+                        <ul>
+                            <li>Разработка игр (<em>Unity</em>)</li>
+                            <li>Десктопные приложения на Windows</li>
+                            <li>Веб-сервисы на платформе <em>.NET</em></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>C++</strong>
+                        <ul>
+                            <li>Разработка игр (<em>Unreal Engine</em>)</li>
+                            <li>Системное программирование и драйверы</li>
+                            <li>Высокопроизводительные приложения</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>C</strong>
+                        <ul>
+                            <li>Операционные системы</li>
+                            <li>Программирование микроконтроллеров и embedded-систем</li>
+                            <li>Драйверы устройств</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+        </div>
         <!-- Секция с терминами -->
         <section id="terms-section">
             <h2>Основные термины</h2>
@@ -309,6 +335,49 @@
                 </dd>
             </dl>
         </section>
+        <section id="cards-section">
+            <h2>Что изучать дальше</h2>
+            <p>Наведи курсор на карточку (или нажми на неё на телефоне).</p>
+            <div class="cards-row">
+                <article class="card" tabindex="0">
+                    <img src="images/lang-logos/python.svg" alt="Логотип Python">
+                    <div class="card-body">
+                        <h3>Python</h3>
+                        <p>Самый простой старт: понятный синтаксис и огромное сообщество.</p>
+                        <a class="card-link" href="https://www.python.org/" target="_blank" rel="noopener">Подробнее</a>
+                    </div>
+                </article>
+                <article class="card" tabindex="0">
+                    <img src="images/lang-logos/js.svg" alt="Логотип JavaScript">
+                    <div class="card-body">
+                        <h3>JavaScript</h3>
+                        <p>Язык веб-страниц: оживляет сайты прямо в браузере.</p>
+                        <a class="card-link" href="https://developer.mozilla.org/ru/docs/Web/JavaScript" target="_blank"
+                            rel="noopener">Подробнее</a>
+                    </div>
+                </article>
+                <article class="card" tabindex="0">
+                    <img src="images/lang-logos/cpp.svg" alt="Логотип C++">
+                    <div class="card-body">
+                        <h3>C++</h3>
+                        <p>Для игр и систем, где важна скорость и контроль над памятью.</p>
+                        <a class="card-link" href="https://isocpp.org/" target="_blank" rel="noopener">Подробнее</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="buttons-section">
+            <h2>Кнопки</h2>
+            <p>Четыре кнопки с разными эффектами при наведении.</p>
+            <div class="buttons-row">
+                <button type="button" class="btn btn-fill">Заливка</button>
+                <button type="button" class="btn btn-arrow">Далее</button>
+                <button type="button" class="btn btn-lift">Подпрыгивание</button>
+                <button type="button" class="btn btn-shine">Блик</button>
+            </div>
+        </section>
+
         <!-- Секция с картинками -->
         <section id="images-section">
             <h2>Изображения</h2>
@@ -319,14 +388,39 @@
             </a>
 
             <p>Карта языков — нажми на любую фигуру, чтобы перейти на сайт языка:</p>
-            <img src="images/langs-map.svg" alt="Карта языков программирования" width="500" height="220"
-                usemap="#langsmap">
+            <div class="map-wrap">
+                <img src="images/langs-map.svg" alt="Карта языков программирования" width="500" height="220"
+                    usemap="#langsmap">
+            </div>
             <map name="langsmap">
                 <area shape="circle" coords="90,110,70" href="https://www.python.org/" alt="Python" target="_blank">
                 <area shape="rect" coords="200,40,330,180" href="https://developer.mozilla.org/ru/docs/Web/JavaScript"
                     alt="JavaScript" target="_blank">
                 <area shape="poly" coords="420,30,480,180,360,180" href="https://isocpp.org/" alt="C++" target="_blank">
             </map>
+        </section>
+        <section id="gallery-section">
+            <h2>Галерея языков</h2>
+            <div class="gallery">
+                <figure class="gallery-item"><img src="images/lang-logos/python.svg" alt="Python">
+                    <figcaption>Python</figcaption>
+                </figure>
+                <figure class="gallery-item"><img src="images/lang-logos/js.svg" alt="JavaScript">
+                    <figcaption>JavaScript</figcaption>
+                </figure>
+                <figure class="gallery-item"><img src="images/lang-logos/java.svg" alt="Java">
+                    <figcaption>Java</figcaption>
+                </figure>
+                <figure class="gallery-item"><img src="images/lang-logos/csharp.svg" alt="C#">
+                    <figcaption>C#</figcaption>
+                </figure>
+                <figure class="gallery-item"><img src="images/lang-logos/cpp.svg" alt="C++">
+                    <figcaption>C++</figcaption>
+                </figure>
+                <figure class="gallery-item"><img src="images/lang-logos/c.svg" alt="C">
+                    <figcaption>C</figcaption>
+                </figure>
+            </div>
         </section>
         <section id="form-section">
             <h2>Форма обратной связи</h2>
@@ -425,11 +519,18 @@
                 frameborder="0"></iframe>
 
             <h2>Видео по теме</h2>
-            <iframe class="embed-video" title="Видео про программирование"
-                src="https://www.youtube.com/embed/zTic41coJEM?si=HWCtlqEYeejejkuU" loading="lazy" allowfullscreen
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            <figure class="video-card">
+                <iframe class="embed-video" title="Видео про программирование"
+                    src="https://www.youtube.com/embed/zTic41coJEM?si=HWCtlqEYeejejkuU" loading="lazy" allowfullscreen
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <figcaption class="video-caption">
+                    <h3>Программирование за 10 минут</h3>
+                    <p>Короткое видео о том, с чего начинают разработчики.</p>
+                </figcaption>
+            </figure>
+        </section>
     </main>
 
     <!-- Ногер -->
@@ -456,6 +557,15 @@
         const toTop = document.querySelector('.to-top');
         window.addEventListener('scroll', () => {
             toTop.classList.toggle('visible', window.scrollY > 300);
+        });
+    </script>
+
+    <script>
+        const burgerToggle = document.querySelector('.burger-toggle');
+        document.querySelectorAll('.main-nav a').forEach((link) => {
+            link.addEventListener('click', () => {
+                burgerToggle.checked = false;
+            });
         });
     </script>
 
