@@ -66,94 +66,101 @@
             <h2>Форма обратной связи</h2>
             <p>Поля, отмеченные звёздочкой, обязательны для заполнения.</p>
 
-            <form class="feedback-form" action="" method="post">
+            <div class="form-scene">
+                <span class="form-square" aria-hidden="true" style="--i: 0; --x: 4%; --y: 6%; --size: 4; --dx: 40; --dy: 30;"></span>
+                <span class="form-square" aria-hidden="true" style="--i: 1; --x: 88%; --y: 3%; --size: 3; --dx: -35; --dy: 45;"></span>
+                <span class="form-square" aria-hidden="true" style="--i: 2; --x: 92%; --y: 48%; --size: 5; --dx: -50; --dy: -25;"></span>
+                <span class="form-square" aria-hidden="true" style="--i: 3; --x: 2%; --y: 70%; --size: 3.5; --dx: 30; --dy: -40;"></span>
+                <span class="form-square" aria-hidden="true" style="--i: 4; --x: 80%; --y: 93%; --size: 2.5; --dx: -45; --dy: -30;"></span>
+                <form class="feedback-form" action="" method="post">
 
-                <fieldset>
-                    <legend>Личные данные</legend>
-                    <p>
-                        <label for="user-name">Имя:</label>
-                        <input type="text" id="user-name" name="user-name" placeholder="Иван Иванов" autocomplete="name"
-                            pattern="[А-Яа-яЁёA-Za-z\s\-]{2,40}" title="Только буквы, от 2 до 40 символов" required>
-                    </p>
-                    <p>
-                        <label for="user-phone">Телефон:</label>
-                        <input type="tel" id="user-phone" name="user-phone" placeholder="+7 (900) 123-45-67" autocomplete="tel"
-                            pattern="\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}" title="Формат: +7 (900) 123-45-67"
-                            required>
-                    </p>
-                    <p>
-                        <label for="user-email">Email:</label>
-                        <input type="email" id="user-email" name="user-email" placeholder="name@example.com" autocomplete="email" required>
-                    </p>
-                    <p>
-                        <label for="user-pass">Пароль (от 6 до 16 символов):</label>
-                        <input type="password" id="user-pass" name="user-pass" placeholder="Придумайте пароль"
-                            minlength="6" maxlength="16" autocomplete="new-password" required>
-                    </p>
-                </fieldset>
+                    <fieldset>
+                        <legend>Личные данные</legend>
+                        <p>
+                            <label for="user-name">Имя:</label>
+                            <input type="text" id="user-name" name="user-name" placeholder="Иван Иванов" autocomplete="name"
+                                pattern="[А-Яа-яЁёA-Za-z\s\-]{2,40}" title="Только буквы, от 2 до 40 символов" required>
+                        </p>
+                        <p>
+                            <label for="user-phone">Телефон:</label>
+                            <input type="tel" id="user-phone" name="user-phone" placeholder="+7 (900) 123-45-67" autocomplete="tel"
+                                pattern="\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}" title="Формат: +7 (900) 123-45-67"
+                                required>
+                        </p>
+                        <p>
+                            <label for="user-email">Email:</label>
+                            <input type="email" id="user-email" name="user-email" placeholder="name@example.com" autocomplete="email" required>
+                        </p>
+                        <p>
+                            <label for="user-pass">Пароль (от 6 до 16 символов):</label>
+                            <input type="password" id="user-pass" name="user-pass" placeholder="Придумайте пароль"
+                                minlength="6" maxlength="16" autocomplete="new-password" required>
+                        </p>
+                    </fieldset>
 
-                <fieldset>
-                    <legend>Ваш уровень в программировании</legend>
-                    <label><input type="radio" name="level" value="beginner" checked> Новичок</label>
-                    <label><input type="radio" name="level" value="middle"> Средний</label>
-                    <label><input type="radio" name="level" value="pro"> Профессионал</label>
-                </fieldset>
+                    <fieldset>
+                        <legend>Ваш уровень в программировании</legend>
+                        <label><input type="radio" name="level" value="beginner" checked> Новичок</label>
+                        <label><input type="radio" name="level" value="middle"> Средний</label>
+                        <label><input type="radio" name="level" value="pro"> Профессионал</label>
+                    </fieldset>
 
-                <fieldset>
-                    <legend>Языки</legend>
-                    <p>
-                        <label for="fav-lang">Любимый язык:</label>
-                        <select id="fav-lang" name="fav-lang" required>
-                            <option value="">-- Выберите язык --</option>
-                            <option value="python">Python</option>
-                            <option value="js">JavaScript</option>
-                            <option value="java">Java</option>
-                            <option value="csharp">C#</option>
-                            <option value="cpp">C++</option>
-                            <option value="c">C</option>
-                        </select>
-                    </p>
-                    <p>
-                        <label for="learn-langs">Что хотите изучать (Ctrl + клик для нескольких):</label>
-                        <select id="learn-langs" name="learn-langs" multiple size="4">
-                            <option value="python" selected>Python</option>
-                            <option value="js">JavaScript</option>
-                            <option value="java">Java</option>
-                            <option value="csharp">C#</option>
-                            <option value="cpp">C++</option>
-                            <option value="c">C</option>
-                        </select>
-                    </p>
-                </fieldset>
+                    <fieldset>
+                        <legend>Языки</legend>
+                        <p>
+                            <label for="fav-lang">Любимый язык:</label>
+                            <select id="fav-lang" name="fav-lang" required>
+                                <option value="">-- Выберите язык --</option>
+                                <option value="python">Python</option>
+                                <option value="js">JavaScript</option>
+                                <option value="java">Java</option>
+                                <option value="csharp">C#</option>
+                                <option value="cpp">C++</option>
+                                <option value="c">C</option>
+                            </select>
+                        </p>
+                        <p>
+                            <label for="learn-langs">Что хотите изучать (Ctrl + клик для нескольких):</label>
+                            <select id="learn-langs" name="learn-langs" multiple size="4">
+                                <option value="python" selected>Python</option>
+                                <option value="js">JavaScript</option>
+                                <option value="java">Java</option>
+                                <option value="csharp">C#</option>
+                                <option value="cpp">C++</option>
+                                <option value="c">C</option>
+                            </select>
+                        </p>
+                    </fieldset>
 
-                <fieldset>
-                    <legend>Дополнительно</legend>
-                    <p>
-                        <label for="meet-time">Удобное время для связи:</label>
-                        <input type="datetime-local" id="meet-time" name="meet-time" min="2026-01-01T09:00"
-                            max="2026-12-31T21:00" required>
-                    </p>
-                    <p>
-                        <label for="user-file">Приложить файл:</label>
-                        <input type="file" id="user-file" name="user-file">
-                    </p>
-                    <p>
-                        <label for="user-msg">Сообщение (от 10 до 300 символов):</label><br>
-                        <textarea id="user-msg" name="user-msg" cols="40" rows="6" minlength="10" maxlength="300"
-                            placeholder="Расскажите, что вам интересно..." required></textarea>
-                        <span class="char-counter" aria-live="polite"></span>
-                    </p>
-                </fieldset>
+                    <fieldset>
+                        <legend>Дополнительно</legend>
+                        <p>
+                            <label for="meet-time">Удобное время для связи:</label>
+                            <input type="datetime-local" id="meet-time" name="meet-time" min="2026-01-01T09:00"
+                                max="2026-12-31T21:00" required>
+                        </p>
+                        <p>
+                            <label for="user-file">Приложить файл:</label>
+                            <input type="file" id="user-file" name="user-file">
+                        </p>
+                        <p>
+                            <label for="user-msg">Сообщение (от 10 до 300 символов):</label><br>
+                            <textarea id="user-msg" name="user-msg" cols="40" rows="6" minlength="10" maxlength="300"
+                                placeholder="Расскажите, что вам интересно..." required></textarea>
+                            <span class="char-counter" aria-live="polite"></span>
+                        </p>
+                    </fieldset>
 
-                <p>
-                    <label><input type="checkbox" name="agree" checked required> Согласен на обработку данных</label>
-                </p>
+                    <p>
+                        <label><input type="checkbox" name="agree" checked required> Согласен на обработку данных</label>
+                    </p>
 
-                <div class="form-buttons">
-                    <input type="submit" value="Отправить">
-                    <button type="reset">Очистить</button>
-                </div>
-            </form>
+                    <div class="form-buttons">
+                        <input type="submit" value="Отправить">
+                        <button type="reset">Очистить</button>
+                    </div>
+                </form>
+            </div>
             <div class="form-success" role="status" hidden></div>
         </section>
 
@@ -181,6 +188,7 @@
     <!-- Подвал сайта (одинаковый на всех страницах) -->
     <footer>
         <nav class="footer-nav" aria-label="Разделы сайта">
+            <p class="footer-title">Разделы</p>
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="languages.html">Языки</a></li>
@@ -192,8 +200,18 @@
         </nav>
 
         <div class="footer-contacts">
+            <p class="footer-title">Контакты</p>
             <p>Телефон: <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
             <p>Почта: <a href="mailto:author@example.com">author@example.com</a></p>
+        </div>
+
+        <div class="footer-social">
+            <p class="footer-title">Мы в соцсетях</p>
+            <ul class="social-links">
+                <li><a class="social-btn social-vk" href="https://vk.com/" target="_blank" rel="noopener">ВКонтакте</a></li>
+                <li><a class="social-btn social-tg" href="https://t.me/" target="_blank" rel="noopener">Telegram</a></li>
+                <li><a class="social-btn social-gh" href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
         </div>
 
         <p class="footer-copy">&copy; <span class="current-year">2026</span>. Учебный проект «Языки программирования».</p>

@@ -161,56 +161,36 @@
         <!-- Сферы применения -->
         <section id="applications-section">
             <h2>Сферы применения языков</h2>
-            <ol>
-                <li>
-                    <strong>Python</strong>
-                    <ul>
-                        <li>Анализ данных и машинное обучение (<em>NumPy, Pandas, TensorFlow</em>)</li>
-                        <li>Веб-разработка (<em>Django, Flask</em>)</li>
-                        <li>Автоматизация и написание скриптов</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>JavaScript</strong>
-                    <ul>
-                        <li>Фронтенд-разработка (<em>React, Vue, Angular</em>)</li>
-                        <li>Серверные приложения (<em>Node.js, Express</em>)</li>
-                        <li>Мобильные приложения (<em>React Native</em>)</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Java</strong>
-                    <ul>
-                        <li>Android-приложения</li>
-                        <li>Корпоративные системы и банковское ПО</li>
-                        <li>Большие серверные приложения</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>C#</strong>
-                    <ul>
-                        <li>Разработка игр (<em>Unity</em>)</li>
-                        <li>Десктопные приложения на Windows</li>
-                        <li>Веб-сервисы на платформе <em>.NET</em></li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>C++</strong>
-                    <ul>
-                        <li>Разработка игр (<em>Unreal Engine</em>)</li>
-                        <li>Системное программирование и драйверы</li>
-                        <li>Высокопроизводительные приложения</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>C</strong>
-                    <ul>
-                        <li>Операционные системы</li>
-                        <li>Программирование микроконтроллеров и embedded-систем</li>
-                        <li>Драйверы устройств</li>
-                    </ul>
-                </li>
-            </ol>
+            <div class="spheres-grid">
+                <article class="sphere-card sphere-web">
+                    <h3>Веб</h3>
+                    <p>Python (Django, Flask), JavaScript (React, Vue, Angular, Node.js), C# (.NET)</p>
+                </article>
+                <article class="sphere-card sphere-data">
+                    <h3>Данные и ИИ</h3>
+                    <p>Python: NumPy, Pandas, TensorFlow</p>
+                </article>
+                <article class="sphere-card sphere-mobile">
+                    <h3>Мобильные приложения</h3>
+                    <p>Java (Android), JavaScript (React Native)</p>
+                </article>
+                <article class="sphere-card sphere-games">
+                    <h3>Игры</h3>
+                    <p>C# (Unity), C++ (Unreal Engine)</p>
+                </article>
+                <article class="sphere-card sphere-enterprise">
+                    <h3>Корпоративные системы</h3>
+                    <p>Java — банковское ПО и большие серверные приложения, C# — десктопные приложения на Windows</p>
+                </article>
+                <article class="sphere-card sphere-system">
+                    <h3>Системное ПО</h3>
+                    <p>C — операционные системы и драйверы, C++ — драйверы и высокопроизводительные приложения</p>
+                </article>
+                <article class="sphere-card sphere-scripts">
+                    <h3>Скрипты и embedded</h3>
+                    <p>Python — автоматизация и скрипты, C — микроконтроллеры и embedded-системы</p>
+                </article>
+            </div>
         </section>
 
         <!-- Карта-изображение -->
@@ -233,6 +213,7 @@
     <!-- Подвал сайта (одинаковый на всех страницах) -->
     <footer>
         <nav class="footer-nav" aria-label="Разделы сайта">
+            <p class="footer-title">Разделы</p>
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="languages.html">Языки</a></li>
@@ -244,8 +225,18 @@
         </nav>
 
         <div class="footer-contacts">
+            <p class="footer-title">Контакты</p>
             <p>Телефон: <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
             <p>Почта: <a href="mailto:author@example.com">author@example.com</a></p>
+        </div>
+
+        <div class="footer-social">
+            <p class="footer-title">Мы в соцсетях</p>
+            <ul class="social-links">
+                <li><a class="social-btn social-vk" href="https://vk.com/" target="_blank" rel="noopener">ВКонтакте</a></li>
+                <li><a class="social-btn social-tg" href="https://t.me/" target="_blank" rel="noopener">Telegram</a></li>
+                <li><a class="social-btn social-gh" href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
         </div>
 
         <p class="footer-copy">&copy; <span class="current-year">2026</span>. Учебный проект «Языки программирования».</p>
