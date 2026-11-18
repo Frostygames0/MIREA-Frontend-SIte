@@ -1936,3 +1936,69 @@ mark {
         font-size: 0.8em;
     }
 }
+
+/* Практика 9–10 */
+.pill-btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--duration), background var(--duration), box-shadow var(--duration);
+}
+.pill-btn:hover { transform: translateY(-2px); box-shadow: var(--glass-shadow); }
+.like-btn.liked { background: linear-gradient(135deg, #ff4d6d, #c9184a); color: #fff; border-color: transparent; }
+.extras-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.click-badge { padding: 0.5rem 1rem; border-radius: 999px; background: var(--gradient-cool); color: #fff; font-weight: 600; }
+.draw-dot {
+    position: absolute; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--gradient-warm); pointer-events: none;
+    transform: translate(-50%, -50%); animation: dot-fade 1.5s forwards;
+}
+@keyframes dot-fade { to { opacity: 0; transform: translate(-50%, -50%) scale(0.3); } }
+
+.login-page { display: grid; place-items: center; min-height: 70vh; padding: 2rem var(--page-pad); }
+.login-card {
+    width: 100%; max-width: 460px; box-sizing: border-box; padding: 2.5rem 2rem;
+    border: 1px solid var(--glass-border); border-radius: calc(var(--radius) * 2);
+    background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--glass-shadow); text-align: center;
+}
+.login-card h1 { margin: 0 0 0.25rem; }
+.login-sub { margin: 0 0 1.5rem; opacity: 0.8; }
+.login-form { display: grid; gap: 1rem; text-align: left; }
+.field { display: grid; gap: 0.35rem; font-weight: 600; font-size: 0.9rem; }
+.login-form input {
+    width: 100%; box-sizing: border-box; padding: 0.75rem 1rem;
+    border: 2px solid #c9d6e3; border-radius: var(--radius);
+    background: #fff; color: #1a3a55; font: inherit;
+    transition: border-color var(--duration), box-shadow var(--duration);
+}
+.login-form input:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(255, 212, 59, 0.4); }
+.captcha-box {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.75rem 1rem; border-radius: var(--radius);
+    background: var(--color-primary-dark); color: var(--color-text-light);
+}
+.captcha-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.7; }
+.captcha-text {
+    font-family: monospace; font-size: 1.5rem; letter-spacing: 0.3em;
+    font-style: italic; text-decoration: line-through rgba(255, 212, 59, 0.6); user-select: none;
+}
+.captcha-row { display: flex; gap: 0.5rem; }
+.captcha-msg { margin: 0; min-height: 1.2em; font-weight: 600; }
+.captcha-msg.ok { color: var(--color-green); }
+.captcha-msg.error { color: #ff6b6b; }
+.login-submit {
+    padding: 0.85rem; border: none; border-radius: var(--radius);
+    background: var(--gradient-warm); color: #1a1a1a; font: inherit; font-weight: 700;
+    cursor: pointer; transition: transform var(--duration), opacity var(--duration);
+}
+.login-submit:hover:not(:disabled) { transform: translateY(-2px); }
+.login-submit:disabled { opacity: 0.45; cursor: not-allowed; }
+.login-extra { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.25rem; }
+.link-btn { border: none; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; opacity: 0.85; }
+.link-btn:hover { opacity: 1; color: var(--color-accent); }

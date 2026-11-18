@@ -242,7 +242,7 @@ function initTermSearch() {
             dt.innerHTML = pos === -1
                 ? escapeHtml(title)
                 : escapeHtml(title.slice(0, pos)) + '<mark>' + escapeHtml(title.slice(pos, pos + query.length)) +
-                  '</mark>' + escapeHtml(title.slice(pos + query.length));
+                '</mark>' + escapeHtml(title.slice(pos + query.length));
         });
         status.textContent = shown > 0 ? `Найдено терминов: ${shown} из ${terms.length}` : 'Ничего не найдено';
     };
@@ -411,6 +411,137 @@ function initFeedbackForm() {
     });
 }
 
+function initPractice9() {
+    const like = document.getElementById('like-btn');
+    if (like) initLike(like);
+    const reg = document.getElementById('ask-register');
+    if (!reg) return;
+    reg.addEventListener('click', () => {
+        if (prompt('Желаете пройти регистрацию на сайте?') === 'Да') {
+            alert('Круто!');
+        } else {
+            alert('Попробуй ещё раз');
+        }
+    });
+
+    document.getElementById('ask-login').addEventListener('click', () => {
+        const login = prompt('Логин:');
+        if (login === 'Админ') {
+            const pass = prompt('Пароль:');
+            if (pass === 'Я главный') {
+                alert('Здравствуйте!');
+            } else if (pass === '' || pass === null) {
+                alert('Отменено');
+            } else {
+                alert('Неверный пароль');
+            }
+        } else if (login === '' || login === null) {
+            alert('Отменено');
+        } else {
+            alert('Я вас не знаю');
+        }
+    });
+}
+
+function initLike(like) {
+    let drawing = false;
+    const draw = (e) => {
+        const dot = document.createElement('div');
+        dot.className = 'draw-dot';
+        dot.style.left = e.pageX + 'px';
+        dot.style.top = e.pageY + 'px';
+        document.body.append(dot);
+    };
+    like.addEventListener('click', () => {
+        like.classList.toggle('liked');
+        drawing = !drawing;
+        if (drawing) document.addEventListener('mousemove', draw);
+        else document.removeEventListener('mousemove', draw);
+    });
+}
+
+function isEmpty(obj) {
+    for (const key in obj) return false;
+    return true;
+}
+
+function Accumulator(startingValue) {
+    this.value = startingValue;
+    this.read = function () {
+        const n = Number(prompt('Сколько ты хочешь добавить?', 1));
+        if (!Number.isNaN(n)) this.value += n;
+    };
+}
+
+function truncate(str, maxlength) {
+    return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str;
+}
+
+function initPractice10() {
+    document.querySelectorAll('.card-body p').forEach((p) => {
+        p.textContent = truncate(p.textContent, 50);
+    });
+
+    const clickButton = document.getElementById('click-btn');
+    if (clickButton) {
+        const cart = new Accumulator(0);
+        const cartValue = document.getElementById('click-value');
+        clickButton.addEventListener('click', () => {
+            cart.read();
+            cartValue.textContent = cart.value;
+        });
+    }
+
+    const form = document.getElementById('login-form');
+    if (!form) return;
+    const text = document.getElementById('captcha-text');
+    const input = document.getElementById('captcha-input');
+    const msg = document.getElementById('captcha-msg');
+    const submit = document.getElementById('login-submit');
+    let answer = '';
+    let numeric = false;
+
+    const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let code = '';
+    for (let i = 0; i < 5; i++) code += letters[Math.floor(Math.random() * letters.length)];
+    answer = code;
+    text.textContent = code;
+
+    const numberCaptcha = () => {
+        const n = Math.floor(Math.random() * 10);
+        const m = Math.floor(Math.random() * 10);
+        answer = String(n + m);
+        text.textContent = `${n} + ${m} = ?`;
+        numeric = true;
+    };
+
+    document.getElementById('captcha-check').addEventListener('click', () => {
+        const data = {};
+        if (input.value.trim()) data.value = input.value.trim();
+        if (isEmpty(data)) {
+            msg.textContent = 'Поле не должно быть пустым';
+            msg.className = 'captcha-msg error';
+            return;
+        }
+        if (data.value === answer) {
+            msg.textContent = 'Верно! Можно входить';
+            msg.className = 'captcha-msg ok';
+            submit.disabled = false;
+        } else {
+            msg.textContent = numeric ? 'Ошибка, попробуйте ещё раз' : 'Неверно, решите пример';
+            msg.className = 'captcha-msg error';
+            submit.disabled = true;
+            numberCaptcha();
+        }
+        input.value = '';
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Вход выполнен');
+    });
+}
+
 /* ===== Запуск ===== */
 document.addEventListener('DOMContentLoaded', () => {
     initToTop();
@@ -424,4 +555,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initTermSearch();
     initQuiz();
     initFeedbackForm();
+    initPractice9();
+    initPractice10();
 });
