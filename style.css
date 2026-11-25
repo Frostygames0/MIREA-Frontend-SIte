@@ -1194,7 +1194,7 @@ h1 {
     box-shadow: 0 4px 0 #1a3a55;
 }
 
-.btn-lift a:visited {
+.btn-lift:visited {
     color: white;
 }
 
