@@ -48,32 +48,83 @@ function initBurger() {
     });
 }
 
-// Уведомления: прочитанные запоминаются, счётчик уменьшается
+function delay(f, ms) {
+    return function (...args) {
+        setTimeout(() => f.apply(this, args), ms);
+    };
+}
+
+const NEW_NOTIFICATIONS = [
+    { text: 'Скидка на курс Python', href: 'store.html' },
+    { text: 'Новый курс по C#', href: 'store.html' },
+    { text: 'Добавлены новые термины', href: 'terms.html' },
+    { text: 'Пройдите тест ещё раз', href: 'quiz.html' },
+];
+
+// Уведомления: прочитанные запоминаются, новые приходят каждые 3 секунды
 function initNotifications() {
     const counter = document.querySelector('.notify-count');
-    const links = document.querySelectorAll('.notify-list a');
-    if (!counter) return;
+    const list = document.querySelector('.notify-list ul');
+    const button = document.querySelector('.notify-btn');
+    if (!counter || !list) return;
 
     const read = new Set(loadData('readNotifications', []));
     const render = () => {
         let unread = 0;
-        links.forEach((link) => {
+        list.querySelectorAll('a').forEach((link, index) => {
             const isRead = read.has(link.dataset.id);
             link.classList.toggle('is-read', isRead);
+            link.querySelector('.num').textContent = index + 1;
             if (!isRead) unread++;
         });
         counter.textContent = unread;
         counter.hidden = unread === 0;
     };
 
-    links.forEach((link) => {
-        link.addEventListener('click', () => {
-            read.add(link.dataset.id);
-            saveData('readNotifications', [...read]);
-            render();
-        });
+    list.addEventListener('click', (event) => {
+        const link = event.target.closest('a');
+        if (!link) return;
+        read.add(link.dataset.id);
+        saveData('readNotifications', [...read].filter((id) => !id.startsWith('new-')));
+        render();
     });
+
+    let added = 0;
+    let pauses = 0;
+    const resume = delay(() => { pauses--; }, 10000);
+
+    button.addEventListener('click', () => {
+        pauses++;
+        resume();
+    });
+
+    setInterval(() => {
+        if (pauses > 0) return;
+        const { text, href } = NEW_NOTIFICATIONS[added % NEW_NOTIFICATIONS.length];
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        const num = document.createElement('span');
+        link.href = href;
+        link.dataset.id = 'new-' + added++;
+        num.className = 'num';
+        link.append(num, text);
+        li.append(link);
+        list.prepend(li);
+        if (list.children.length > 8) list.lastElementChild.remove();
+        render();
+    }, 3000);
+
     render();
+}
+
+function showNotification({ top = 90, right = 20, html, className = '' }) {
+    const notification = document.createElement('div');
+    notification.className = ('notification ' + className).trim();
+    notification.style.top = top + 'px';
+    notification.style.right = right + 'px';
+    notification.innerHTML = html;
+    document.body.append(notification);
+    setTimeout(() => notification.remove(), 1500);
 }
 
 // Текущий год в подвале
@@ -542,6 +593,138 @@ function initPractice10() {
     });
 }
 
+/* ===== Курсы: каталог и корзина ===== */
+const COURSES = [
+    { id: 'python', title: 'Python с нуля', logo: 'python', price: 4900 },
+    { id: 'js', title: 'JavaScript для веба', logo: 'js', price: 5900 },
+    { id: 'java', title: 'Java: основы ООП', logo: 'java', price: 7500 },
+    { id: 'cpp', title: 'C++ для игр', logo: 'cpp', price: 8900 },
+    { id: 'csharp', title: 'C# и Unity', logo: 'csharp', price: 6900 },
+    { id: 'c', title: 'Язык C и память', logo: 'c', price: 3900 },
+];
+
+function filterRange(arr, a, b) {
+    return arr.filter((item) => item.price >= a && item.price <= b);
+}
+
+function formatPrice(price) {
+    return price.toLocaleString('ru-RU');
+}
+
+function initStore() {
+    const courseList = document.getElementById('course-list');
+    if (!courseList) return;
+    const cartList = document.getElementById('cart-list');
+    const cartEmpty = document.getElementById('cart-empty');
+    const cartTotal = document.getElementById('cart-total');
+    const count = document.getElementById('course-count');
+    const minInput = document.getElementById('price-min');
+    const maxInput = document.getElementById('price-max');
+    const sortButtons = document.querySelectorAll('[data-sort]');
+    const cart = loadData('cart', []);
+    let sort = null;
+
+    const findCourse = (id) => COURSES.find((course) => course.id === id);
+
+    const renderCatalog = () => {
+        const min = minInput.value === '' ? 0 : Number(minInput.value);
+        const max = maxInput.value === '' ? Infinity : Number(maxInput.value);
+        const courses = filterRange(COURSES, min, max);
+        if (sort) courses.sort((a, b) => (sort === 'asc' ? a.price - b.price : b.price - a.price));
+
+        courseList.replaceChildren(...courses.map(({ id, title, logo, price }) => {
+            const li = document.createElement('li');
+            li.className = 'course-card';
+            li.innerHTML = `<img src="images/lang-logos/${logo}.svg" alt="" width="64" height="64">
+                <h3></h3><p class="course-price">${formatPrice(price)} ₽</p>
+                <button type="button" class="pill-btn">В корзину</button>`;
+            li.querySelector('h3').textContent = title;
+            li.querySelector('button').addEventListener('click', () => addToCart(id));
+            return li;
+        }));
+        count.textContent = courses.length > 0 ? `Найдено курсов: ${courses.length}` : 'Ничего не найдено';
+    };
+
+    const renderCart = () => {
+        let total = 0;
+        cartList.replaceChildren(...cart.map((item, index) => {
+            const { title, price } = findCourse(item.id);
+            total += price * item.qty;
+            const li = document.createElement('li');
+            li.className = 'cart-item';
+            li.innerHTML = `<span class="cart-title"></span>
+                <span class="cart-qty">
+                    <button type="button" class="qty-btn" data-step="-1" aria-label="Меньше">−</button>
+                    <span>${item.qty}</span>
+                    <button type="button" class="qty-btn" data-step="1" aria-label="Больше">+</button>
+                </span>
+                <span class="cart-sum">${formatPrice(price * item.qty)} ₽</span>
+                <button type="button" class="cart-remove" aria-label="Удалить">🗑</button>`;
+            li.querySelector('.cart-title').textContent = title;
+            li.querySelectorAll('.qty-btn').forEach((button) => {
+                button.addEventListener('click', () => {
+                    item.qty = Math.max(1, item.qty + Number(button.dataset.step));
+                    update();
+                });
+            });
+            li.querySelector('.cart-remove').addEventListener('click', () => {
+                cart.splice(index, 1);
+                update();
+            });
+            return li;
+        }));
+        cartTotal.textContent = formatPrice(total);
+        cartEmpty.hidden = cart.length > 0;
+    };
+
+    const update = () => {
+        saveData('cart', cart);
+        renderCart();
+    };
+
+    const addToCart = (id) => {
+        const item = cart.find((i) => i.id === id);
+        if (item) item.qty++;
+        else cart.push({ id, qty: 1 });
+        update();
+        showNotification({ html: `Курс «${findCourse(id).title}» добавлен в корзину` });
+    };
+
+    document.getElementById('cart-clear').addEventListener('click', () => {
+        cart.length = 0;
+        update();
+        showNotification({ html: 'Корзина очищена', className: 'notification-warn' });
+    });
+
+    sortButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            sort = button.dataset.sort;
+            sortButtons.forEach((b) => b.setAttribute('aria-pressed', b === button));
+            renderCatalog();
+        });
+    });
+    minInput.addEventListener('input', renderCatalog);
+    maxInput.addEventListener('input', renderCatalog);
+
+    renderCatalog();
+    renderCart();
+}
+
+function initPlanList() {
+    const button = document.getElementById('plan-btn');
+    if (!button) return;
+    const list = document.getElementById('plan-list');
+    button.addEventListener('click', () => {
+        let text = prompt('Что хотите изучить?');
+        while (text) {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.append(li);
+            text = prompt('Что ещё хотите изучить?');
+        }
+    });
+}
+
 /* ===== Запуск ===== */
 document.addEventListener('DOMContentLoaded', () => {
     initToTop();
@@ -557,4 +740,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initFeedbackForm();
     initPractice9();
     initPractice10();
+    initStore();
+    initPlanList();
 });
