@@ -2172,6 +2172,7 @@ mark {
     opacity: 1;
     color: var(--color-accent);
 }
+
 /* Практика 11–12 */
 .store-panel {
     margin: 16px 0;
@@ -2323,4 +2324,11 @@ mark {
     .cart-item {
         grid-template-columns: 1fr auto;
     }
+}
+
+.btn,
+.btn:visited,
+.btn:hover,
+.btn:focus {
+    color: #ffffff;
 }
