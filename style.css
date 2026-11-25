@@ -1194,6 +1194,10 @@ h1 {
     box-shadow: 0 4px 0 #1a3a55;
 }
 
+.btn-lift>a {
+    color: white;
+}
+
 .btn-lift::after {
     content: "";
     position: absolute;
@@ -2324,11 +2328,4 @@ mark {
     .cart-item {
         grid-template-columns: 1fr auto;
     }
-}
-
-.btn,
-.btn:visited,
-.btn:hover,
-.btn:focus {
-    color: #ffffff;
 }
