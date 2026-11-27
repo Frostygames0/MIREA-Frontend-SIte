@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Доступ запрещён">
+    <meta name="theme-color" content="#2b5b84">
+
+    <title>Доступ запрещён — programming101</title>
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <!-- Шрифт: заранее устанавливаем соединение с серверами Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+    <!-- Шапка сайта (одинаковая на всех страницах) -->
+    <header class="site-header">
+        <a href="/index.html" class="logo">
+            <img src="/images/favicon.svg" alt="" width="32" height="32">
+            <span>programming101</span>
+        </a>
+        <div class="notify">
+            <button type="button" class="notify-btn" aria-label="Уведомления">
+                🔔
+                <span class="notify-count">4</span>
+            </button>
+            <div class="notify-list">
+                <ul>
+                    <li><a href="/index.html#news-section" data-id="news"><span class="num">1</span>Свежие новости</a>
+                    </li>
+                    <li><a href="/examples.html" data-id="examples"><span class="num">2</span>Новые примеры кода</a></li>
+                    <li><a href="/quiz.html" data-id="quiz"><span class="num">3</span>Проверьте себя в тесте</a></li>
+                    <li><a href="/contacts.html" data-id="contacts"><span class="num">4</span>Предложите тему</a></li>
+                </ul>
+            </div>
+        </div>
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger" aria-label="Открыть меню"><span></span></label>
+
+        <nav class="main-nav" aria-label="Основное меню">
+            <ul>
+                <li><a href="/index.html">Главная</a></li>
+                <li><a href="/languages.html">Языки</a></li>
+                <li><a href="/examples.html">Примеры кода</a></li>
+                <li><a href="/terms.html">Термины</a></li>
+                <li><a href="/quiz.html">Тест</a></li>
+                <li><a href="/store.html">Курсы</a></li>
+                <li><a href="/contacts.html">Обратная связь</a></li>
+                <li><a href="/login.html">Вход</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content" class="not-found">
+        <h1 id="top">403 — доступ запрещён.</h1>
+        <p class="lead">Похоже у вас нет доступа к контенту размещенному здесь :)</p>
+        <p><a class="btn btn-lift" href="/index.html">Вернуться на главную</a></p>
+    </main>
+
+    <!-- Подвал сайта (одинаковый на всех страницах) -->
+    <footer>
+        <nav class="footer-nav" aria-label="Разделы сайта">
+            <p class="footer-title">Разделы</p>
+            <ul>
+                <li><a href="/index.html">Главная</a></li>
+                <li><a href="/languages.html">Языки</a></li>
+                <li><a href="/examples.html">Примеры кода</a></li>
+                <li><a href="/terms.html">Термины</a></li>
+                <li><a href="/quiz.html">Тест</a></li>
+                <li><a href="/store.html">Курсы</a></li>
+                <li><a href="/contacts.html">Обратная связь</a></li>
+            </ul>
+        </nav>
+
+        <div class="footer-contacts">
+            <p class="footer-title">Контакты</p>
+            <p>Телефон: <a href="tel:+79001234567">+7 (900) 123-45-67</a></p>
+            <p>Почта: <a href="mailto:author@example.com">author@example.com</a></p>
+        </div>
+
+        <div class="footer-social">
+            <p class="footer-title">Мы в соцсетях</p>
+            <ul class="social-links">
+                <li><a class="social-btn social-vk" href="https://vk.com/" target="_blank" rel="noopener">ВКонтакте</a>
+                </li>
+                <li><a class="social-btn social-tg" href="https://t.me/" target="_blank" rel="noopener">Telegram</a>
+                </li>
+                <li><a class="social-btn social-gh" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+                </li>
+            </ul>
+        </div>
+
+        <p class="footer-copy">&copy; <span class="current-year">2026</span>. Учебный проект «Языки программирования».
+        </p>
+    </footer>
+
+    <a href="#top" class="to-top" aria-label="Наверх">↑</a>
+</body>
+
+</html>
