@@ -55,10 +55,10 @@ function delay(f, ms) {
 }
 
 const NEW_NOTIFICATIONS = [
-    { text: 'Скидка на курс Python', href: 'store.html' },
-    { text: 'Новый курс по C#', href: 'store.html' },
-    { text: 'Добавлены новые термины', href: 'terms.html' },
-    { text: 'Пройдите тест ещё раз', href: 'quiz.html' },
+    { text: 'Скидка на курс Python', href: 'store' },
+    { text: 'Новый курс по C#', href: 'store' },
+    { text: 'Добавлены новые термины', href: 'terms' },
+    { text: 'Пройдите тест ещё раз', href: 'quiz' },
 ];
 
 // Уведомления: прочитанные запоминаются, новые приходят каждые 3 секунды
@@ -215,7 +215,7 @@ function initTabs() {
             });
         });
 
-        // Открываем вкладку из адреса (например, examples.html#ex-python)
+        // Открываем вкладку из адреса (например, examples#ex-python)
         const fromHash = buttons.find((b) => '#' + b.getAttribute('aria-controls') === location.hash);
         list.hidden = false;
         select(fromHash || buttons[0], false);
